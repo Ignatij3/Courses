@@ -1,0 +1,30 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+p {text-align:center;position:relative; top:100px;}
+img {width:400px; height:250px; border: 5px inset yellowgreen;}
+</style>
+<script language="JavaScript">
+function PicSwitch(n) {
+	document.Image01.src='../image/images00'+n+'.jpg';
+}
+</script>
+</HEAD>
+<BODY>
+<p>
+		<img name="Image01" src="../image/images004.jpg"><br>
+		<select name="Select1" onChange="PicSwitch(this.value)">
+		<option name="Picture_1" value="4" checked>Картинка 1
+		<option name="Picture_2" value="5">Картинка 2
+		<option name="Picture_3" value="7">Картинка 3
+		<option name="Picture_4" value="9">Картинка 4
+		<option name="Picture_5" value="12">Картинка 5
+		<option name="Picture_6" value="14">Картинка 6
+		</select>
+</p>
+<p><a href="EditF.html">Back</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>Form</TITLE>
+</HEAD>
+<BODY>
+<FORM action="mailto:lera@inbox.lv" method="post" enctype="text/plain" name="MyForm">
+
+<H4>Profile:</H4>
+<INPUT type="text" name="firstname" value="First Name" size="30"><BR>
+<INPUT type="text" name="lastname" value="Last Name" size="30"><BR>
+<INPUT type="text" name="email" value="Address E-mail" size="30">
+
+
+<H4>Sex:</H4>
+<INPUT type="radio" name="sex" value="Male" checked="checked">Man 
+<INPUT type="radio" name="sex" value="Female">Woman
+
+<H4>Languages:</H4>
+<input type="checkbox" name="language" value="ru" checked>Russian<BR>
+<input type="checkbox" name="language" value="lv" checked>Latvian<BR>
+<input type="checkbox" name="language" value="en">English<BR>
+<input type="checkbox" name="language" value="other">Other
+
+<H4>Education:</H4>
+ <SELECT name="educ" > 
+ 	<OPTION value="primary">Primary
+	<OPTION value="secondary" selected>Secondary
+	<OPTION value="higher">Higher education
+</SELECT>					
+
+<H4>Professional skills:</H4>
+ <SELECT name="it" size="4">  	
+	<OPTION value="html" selected>Html
+	<OPTION value="css">Css
+	<OPTION value="js">JavaScript
+	<OPTION value="php">Php
+	<OPTION value="java">Java
+	<OPTION value="ps">Adobe Photoshop
+	<OPTION value="cd">CorelDraw	
+</SELECT>					
+
+<H4>Comment:</H4>					
+<TEXTAREA cols=20 rows="3">Enter the text</TEXTAREA><BR>
+
+<H4>Button:</H4>
+<INPUT type="button" value="Confirm information"><BR><BR>
+<INPUT type="submit" value="Send"> 
+<INPUT type="reset" value="Reset">
+</FORM>
+</BODY>
+</HTML>

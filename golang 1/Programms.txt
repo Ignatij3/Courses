@@ -1,0 +1,2 @@
+fun/hddkiller.go
+Check everything

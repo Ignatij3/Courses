@@ -1,0 +1,169 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>IF and Switch</TITLE>
+<STYLE type="text/css">
+IMG {width:180px; height:100px; border:1px solid black;}
+</STYLE>
+<SCRIPT language="JavaScript"> 
+
+
+//Цикличность смены двух изображений по событию onClick
+ var i=0; // для f0()
+function f0() {	
+	if (i==0) {
+		document.pic0.src="../image/images001.jpg";
+		i++;
+		} else {
+		document.pic0.src="../image/images002.jpg";
+		i--;
+		}	
+               }
+						
+//Цикличность смены двух изображений по событию onClick  - использование new Image
+var i5=0; // для f5()
+var foto1 = new Image;
+var foto2 = new Image;
+foto1.src='../image/images001.jpg';
+foto2.src='../image/images002.jpg';
+function f5() {	
+	if (i5==0) {
+	  document.pic5.src=foto2.src;
+	  i5++;
+	  } else  {
+      document.pic5.src=foto1.src;
+	  i5--;
+			  }	
+			}	    	
+	
+//Цикличность смены двух изображений по событию onClick по кнопке button
+  var j=0; // для f1()
+  function f1(){
+      if (j==0) {
+        document.MyForm1.text.value="Здравствуйте"; 
+        document.pic1.src="../image/images004.jpg"; 
+		j=1;
+		} else {
+		document.MyForm1.text.value="Привет!"; 
+        document.pic1.src="../image/images000.jpg"; 
+		j=0;
+				}
+               } 
+	   	  
+//Цикличность смены двух изображений по кнопке checkbox (независимая фиксациея) 
+  var j1=0; // для f2()
+  function f2() {
+   if (document.MyForm2.myсheck.checked)   {
+    document.pic2.src="../image/images008.jpg";	
+	document.MyForm2.text.value="Сними";
+	} else {
+    document.pic2.src="../image/images003.jpg";	
+	document.MyForm2.text.value="Отметь";
+											} 
+				}
+
+//Цикличность смены нескольких изображений по событию onClick
+  var j2=0; // для f3()  
+  function f3(){ 
+	   if (j2==4)  j2=0;
+	   else    j2++;
+		   switch (j2) {
+			case 0:
+			document.pic3.src="../image/images000.jpg";
+			break;
+			case 1:
+			document.pic3.src="../image/images004.jpg";
+			break;
+			case 2:
+			document.pic3.src="../image/images001.jpg";
+			break;
+			case 3:
+			document.pic3.src="../image/images008.jpg";
+			break;
+			case 4:
+			document.pic3.src="../image/images0010.jpg";
+			break;			 			 
+					}		 	  	  
+				}	
+//Цикличность смены нескольких изображений по событию onClick по кнопке button		   
+   var j3=0; // для f4()
+   function f4(){ 
+	   if (j1==4) j1=0;
+	   else 
+	   j1++;
+			switch (j1) {
+			case 0:
+			 document.pic4.src="../image/images000.jpg";
+			 document.MyForm4.text.value="Картинка 1";
+			 break;
+			case 1:
+			 document.pic4.src="../image/images004.jpg";
+			  document.MyForm4.text.value="Картинка 2";
+			 break;
+			case 2:
+			 document.pic4.src="../image/images001.jpg";
+			  document.MyForm4.text.value="Картинка 3";
+			 break;
+			case 3:
+			document.pic4.src="../image/images008.jpg";
+			 document.MyForm4.text.value="Картинка 4";
+			break;
+			case 4:
+			document.pic4.src="../image/images0010.jpg";
+			document.MyForm4.text.value="Картинка 5";
+			break;			 			 
+						}		 	  	  
+				}		   
+
+</SCRIPT>	    
+</HEAD>
+<BODY>
+<BR>
+
+<!------Смена картинки по IF----------->	
+<H2>Пример 1</H2>
+<H3>Цикличность смены двух изображений по событию onClick</H3>
+<IMG NAME="pic0" SRC="../image/images008.jpg" onclick="f0();" ><BR>
+<!----------------->
+
+<H2>Пример 2</H2>	
+<H3>Цикличность смены двух изображений по событию onClick  - использование new Image</H3>
+<SCRIPT language="JavaScript"> 
+document.write('<IMG NAME="pic5" SRC="'+foto1.src+'" onclick="f5();" ><BR>');
+</SCRIPT>
+ <!----------------->	
+
+ <H2>Пример 3</H2>
+<H3>Цикличность смены двух изображений по событию onClick на кнопке button </H3>
+<IMG NAME="pic1" SRC="../image/images000.jpg" ><BR> 
+<FORM name="MyForm1">
+<INPUT type="button" value="OK" onclick="f1();">
+<INPUT name="text" type="text" value="Привет!">
+</FORM>   
+ <!----------------->	
+
+<H2>Пример 4</H2>
+<H3>Цикличность смены двух изображений по кнопке checkbox <BR>(независимая фиксация)</H3>
+<FORM name="MyForm2">
+<INPUT name="text" type="text" value="Сними"> 
+<INPUT type="checkbox" name="myсheck" checked onclick="f2()"> 
+<BR>
+<IMG NAME="pic2" SRC="../image/images008.jpg"> 
+</FORM>	
+ 
+<HR>
+<!-----------SWITCH-------------------->
+<H2>Пример 5</H2>
+<H3>Цикличность смены нескольких изображений по событию onClick <BR>(используется switch)</H3> 
+<IMG NAME="pic3" SRC="../image/images000.jpg" onclick="f3();">
+ <!----------------->	
+
+<H2>Пример 6</H2>
+<H3>Цикличность смены нескольких изображений по событию onClick на кнопке button <BR>(используется switch)</H3> 
+<IMG NAME="pic4" SRC="../image/images000.jpg" ><BR> 
+<FORM name="MyForm4">
+<INPUT name="text" type="text" value="Картинка 1"><BR> 
+<INPUT type="button" value="OK" onclick="f4();">
+</FORM>
+</BODY>
+</HTML>

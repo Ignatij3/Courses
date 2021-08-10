@@ -1,0 +1,65 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+  <title></title>
+  <STYLE type="text/css">
+IMG.a1 {height:80px;width:150px;border:1px solid black;}
+</STYLE>
+ </HEAD>
+<BODY>
+	<H2>Свойства IMAGE</H2>
+	<HR>
+	<H3>Пример 1 (вывод свойств объекта)</H3>
+	<IMG name='pic0' class='a1' src='../image/images001.jpg'>
+	<script language="JavaScript">
+	document.write("<P>Количество обьектов <I>images</I>:"+ document.images.length);
+	document.write("<BR>Имя картинки: "+ document.images[0].name)
+	document.write("<BR>");
+	document.write("Адрес URL - "+document.pic0.src);
+	document.write("<BR>");
+	document.write("Размер картинки - "+document.pic0.width+" x "+document.pic0.height);
+	</SCRIPT>
+
+
+	<H3>Пример 2 (изменение значений свойств объекта)</H3>
+	<IMG name='pic1'>       <!--Отсутствуют все атрибуты кроме name -->
+	<SCRIPT language="JavaScript">
+	document.pic1.src='../image/images000.jpg';
+	document.pic1.width='300';
+	document.pic1.border='2';
+	document.write("<BR>");
+	document.write("Адрес URL - "+document.pic1.src);
+	document.write("<BR>");
+	document.write("Размер картинки - "+document.pic1.width+" x "+document.pic1.height);
+	</SCRIPT>
+	<HR>
+
+	<H2>Свойства FORMS</H2>
+	<form name="myForm">  <!-- форма с двумя текстовыми полями -->
+	<input type="text" name="text1" value="Привет!" size="20"><BR>
+	<input type="text" name="text2" value="Hello!" size="20">
+	</form>
+<!------------------------------------------------------------>
+
+<H3>Пример 3 (вывод значений полей формы)</H3>
+
+	<SCRIPT language="JavaScript">
+	document.write("Количество обьектов <I>forms</I>: "+ document.forms.length +"<BR>");
+	document.write("Имя формы: "+ document.forms[0].name);
+	document.write("<BR>Количество элементов формы: "+ document.forms[0].length);
+	document.write("<BR>Имена элементов в форме и их значение:");
+	document.write("<BR>"+document.myForm.elements[0].name+" "+document.myForm.text1.value);
+	document.write("<BR>"+document.myForm.elements[1].name+" "+ document.myForm.text2.value);
+	</SCRIPT>
+
+	<H3>Пример 4 (изменение размера полей формы и значений в текстовых полях )</H3>
+	<SCRIPT language="JavaScript">
+	document.myForm.text1.value=document.pic0.src;
+	document.myForm.text2.value=document.pic1.src;
+	document.myForm.text1.size=100;
+	document.myForm.text2.size=100;
+	document.write(document.myForm.elements[0].name+" "+document.myForm.text1.value);
+	document.write("<BR>"+document.myForm.elements[1].name+" "+ document.myForm.text2.value);
+	</SCRIPT>
+</BODY>
+</HTML>

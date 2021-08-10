@@ -1,0 +1,39 @@
+﻿<HTML>
+<HEAD>
+<TITLE>Опыты с иерархией объектов </TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<STYLE type="text/css">
+IMG {height:100px;border:1px solid black;}
+INPUT {width:150px;}
+</STYLE>
+ </HEAD>
+<BODY>
+<A name="M1">
+<H2>Опыты с иерархией объектов </H2>
+<HR>
+<SCRIPT language="JavaScript">
+document.write("<IMG name='picture1' src='../image/images001.jpg'>&nbsp");
+document.write("<IMG name='picture2' src='../image/images002.jpg'><BR>");
+document.write("<FORM name='MyForm'>");
+document.write("<INPUT name='text1' type='text' value='Hello!'>");
+document.write("<INPUT name='text2' type='text' value='Привет!'>");
+document.write("</FORM>");
+document.write("<A href='#M1' name='Begin'>Начало документа</A><HR>");
+//---------------
+document.write("<BR>Количество картинок: "+document.images.length+"<BR>");
+document.write("Имена картинок:<BR>");
+document.write(document.images[0].name);
+document.write("<BR>");
+document.write(document.images[1].name);
+//---------------
+document.write("<BR>Количество форм: "+document.forms.length+"<BR>");
+document.write(" Имя формы: "+document.forms[0].name+"<BR>");
+document.write("Элементы формы: <BR>");
+document.write(document.MyForm.elements[0].name+"<BR>");
+document.write(document.MyForm.elements[1].name);
+//---------------
+document.write("<BR>Количество  ссылок "+document.links.length);
+document.write(" <BR>Имя ссылки: "+document.links[0].name+"<BR>");
+</SCRIPT>
+</BODY>
+</HTML>

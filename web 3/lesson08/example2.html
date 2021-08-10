@@ -1,0 +1,58 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>Задание 8</TITLE>
+<STYLE type="text/css">
+IMG {width:180px; height:100px; border:1px solid black;}
+</STYLE>
+ <SCRIPT language="JavaScript"> 
+ var k ="../image/";
+ foto = new Array; 
+ for (var i=0; i<8; i++) {
+ foto[i] = new Image;
+ foto[i].src=k+"images00"+i+".jpg";		}  
+ var n=0;
+ function f2(){
+ if (n==0) {
+ j=3;
+ n=1;
+ }  else  {
+ j=0;
+ n=0;
+ };
+    for (var i=0; i<3 ;i++)  {
+	document.images[i].src = foto[j].src;
+	j++;
+							}
+			} 
+ 
+ //-----------------
+var k=0;
+var f=0;
+function slideShow() {
+f=1;
+k++; if(k>7) k=0;
+document.images[3].src = foto[k].src;
+setTimeout("slideShow()",1000);
+} 
+
+ </SCRIPT> 
+</HEAD>
+<BODY >
+<H1>Пример 1</H1>
+<H3>Замена группы картинок</H3>
+ <SCRIPT language="JavaScript">
+ for (var i=0; i<3 ;i++)  
+ document.write('<IMG src="'+foto[i].src+'">&nbsp');
+ </SCRIPT> 
+ <INPUT type="button" value=" Click!! " onclick="f2();"  >
+<HR>
+<H1>Пример 2</H1>
+<H3>Функция setTimeout для программирования SlideShow </H3>
+ <SCRIPT language="JavaScript"> 
+document.write('<IMG src="'+foto[0].src+'">');
+ </SCRIPT> 
+<INPUT type="button" name="text" value=" Click!! " onClick="if (f==0) slideShow();">
+
+</BODY>
+</HTML>

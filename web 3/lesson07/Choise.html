@@ -1,0 +1,30 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>Choise</TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+p {position:relative; top:100px; text-align:center;}
+img {border:5px inset yellowgreen;}
+</style>
+<script language="JavaScript">
+var n = 0;
+function Change() {
+	if (n==0) {
+		document.ImageX.src = "../image/podsnegnik.jpg";
+		n++;
+	} else {
+		document.ImageX.src = "../image/pic1.jpg";
+		n--;
+	}
+}
+</script>
+</HEAD>
+<BODY>
+<p><img name="ImageX" src="../image/pic1.jpg" height="150px" width="300px"
+	onClick="Change();"
+	onMouseOver="document.ImageX.height='300'; document.ImageX.width='600';"
+	onMouseOut="document.ImageX.height='150'; document.ImageX.width='300'"></p>
+<p class="p2"><a href="Choise2.html">Switch</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,5 @@
+16/04/2020,Warsaw CDPR:20,Warsaw Game:77
+11/12/2001,Daugavpils Digit:12,Daugavpils Relate:14,*
+30/07/2019,New-York Denuvo:1,New-York CPY:59,*
+12/10/1998,Amsterdam Guys:44,Amsterdam Death:8
+05/02/2010,Sydney Random:9,Sydney Bunch:1,*

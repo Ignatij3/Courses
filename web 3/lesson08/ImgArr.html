@@ -1,0 +1,70 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>ImgArr</TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+table {position:relative; top:100px;}
+img {border:5px inset yellowgreen; height:100px; width:200px;}
+p {position:relative; top:100px; text-align:center;}
+</style>
+<script language="JavaScript">
+FPack = new Array;
+var n = 0
+var s = 0
+var t = 0
+var w = 0
+var o = 0
+var z = 0
+for (n = 0; n < 8; n++) {
+	FPack[n] = new Image()
+	FPack[n].src = "../image/images00"+s+".jpg";
+	s+=2;
+}
+function Other() {
+	if (o == 0) {
+		z = 3;
+		o = 1;
+	} else {
+		z = 0;
+		o = 0;
+	}
+	for (var k = 0; k < 4; k++) {
+		document.images[k].src = FPack[z].src;
+		z++;
+	}
+	document.Test.Switcher.value = o;
+}
+</script>
+</HEAD>
+<BODY>
+<table align="center">
+
+<tr>		
+
+<script language="JavaScript">
+for (var t = 0; t <= 3; t++) {
+	document.write('<td><img src="'+FPack[t].src+'"></td>')
+	w++;
+	if (w == 2) {
+		document.write('</tr><tr>')
+	}
+}
+</script>
+
+</tr>
+
+<tr>
+
+	<th colspan="2">
+	<form name="Test">
+		<input type="button" name="Switcher" value="0" onClick="Other(this.value)">
+	</form>
+	</th>
+
+</tr>
+
+</table>
+<p><a href="ImgArr2.html">Switch</a></p>
+</BODY>
+</HTML>

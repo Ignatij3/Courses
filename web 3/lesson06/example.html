@@ -1,0 +1,95 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<STYLE type="text/css">
+IMG {border:1px solid black;}
+IMG.a1 {width:200px;}
+</STYLE>
+<SCRIPT language="JavaScript">
+
+//------------------
+	function picture() {
+		document.write("<IMG class='a1' src='../image/images000.jpg' >&nbsp");
+	}
+//------------------
+
+	function MyFunction(w) {
+		document.pic1.width=w;
+	}
+//------------------
+	function MyFunction1(n) {
+		document.pic0.src='../image/images00'+n+'.jpg'; 
+		document.MyForm.text1.value=document.pic0.src;
+	}
+//------------------
+	function f2(z){ 
+		 document.pic2.src='../image/'+z; 
+		 document.MyForm1.text1.value=z;
+	   } 
+//------------------  
+	function MyFoto() {
+		w=prompt('Введите номер картинки ','2');
+		return ('../image/images00'+w+'.jpg');
+	} 
+</SCRIPT>
+</HEAD>
+<BODY>
+
+<H3>Пример 1 (повторное использование ф-ции)</H3>
+	<SCRIPT language="JavaScript">
+	picture();
+	picture();
+	document.write("<BR>");
+	picture();
+	picture();
+	 </SCRIPT>
+ 
+ <HR>
+ <H3>Пример 2 (ф-ция с параметром)</H3>
+	 <IMG name="pic1" SRC="../image/images002.jpg" width="200px"
+	 onMouseOver="MyFunction(300);" 
+	 onMouseOut="MyFunction(200);"><BR>
+	 <HR>
+ 
+<H3>Пример 3 (ф-ция с параметром)</H3>
+	<IMG name="pic0" class="a1" src="../image/images002.jpg" >
+	<FORM name="MyForm">
+		<SCRIPT language="JavaScript">
+		document.write(" <INPUT type='text' name='text1' size='85' value='"+document.pic0.src+"'><BR>");
+		</SCRIPT>
+	 <INPUT type="radio" name="choice" onClick="MyFunction1(2)" checked>
+	 <INPUT type="radio" name="choice" onClick="MyFunction1(3)" >
+	 <INPUT type="radio" name="choice" onClick="MyFunction1(4)" >
+	 <INPUT type="radio" name="choice" onClick="MyFunction1(5)" >
+	 <INPUT type="radio" name="choice" onClick="MyFunction1(6)" >
+	</FORM>
+	<HR>
+
+<H3>Пример 4 (ф-ция с параметром this.value)</H3>
+	<FORM name="MyForm1">
+	<SELECT name="menu" onChange="f2(this.value);"> 
+	<OPTION value="images001.jpg" selected>Картинка 1</OPTION>
+	<OPTION value="images002.jpg">Картинка 2</OPTION>
+	<OPTION value="images000.jpg">Картинка 3</OPTION>
+	</SELECT> 
+	<BR> 
+	<IMG NAME="pic2" SRC="../image/images001.jpg" class="a1"> 
+	<BR>
+	<INPUT	name="text1" type="text" value="images001.jpg"> 
+	</FORM> 
+	<HR>
+
+
+<H3>Пример 5 (ф-ция с вазвратом параметра)</H3>
+	<SCRIPT language="JavaScript">
+	var foto = new Image;
+	foto.src=MyFoto();
+	document.write('<IMG name="p1" SRC="'+foto.src+'" class="a1">');
+	document.write ("<BR>"+foto.src);
+	foto.src=MyFoto();
+	document.write('<BR><BR><IMG name="p2" SRC="'+foto.src+'" class="a1">');
+	document.write ("<BR>"+foto.src);
+	</SCRIPT>
+</BODY>
+</HTML>

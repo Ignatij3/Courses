@@ -1,0 +1,1 @@
+go test -bench . benchmark_guesser_test.go

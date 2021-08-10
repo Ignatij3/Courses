@@ -1,0 +1,65 @@
+[
+  {
+    "Action": "create_Teacher",
+    "Teacher": {
+      "Subject": "Chemistry",
+      "Salary": 1292.4,
+      "Classrooms": [
+        101,
+        102,
+        103
+      ],
+      "Person": {
+        "Name": "Anatolij",
+        "Surname": "Kosolapenko"
+      }
+    }
+  },
+  {
+    "Action": "create_Teacher",
+    "Teacher": {
+      "Subject": "Math",
+      "Salary": 300,
+      "Classrooms": [
+        204
+      ],
+      "Person": {
+        "Name": "Vasilij",
+        "Surname": "Potapenko"
+      }
+    }
+  },
+  {
+    "Action": "update_Teacher",
+    "Teacher": {
+      "Subject": "Literature",
+      "Salary": 1292.4,
+      "Classrooms": [
+        201,
+        202,
+        203
+      ],
+      "Person": {
+        "ID": 231,
+        "Name": "Anatolij",
+        "Surname": "Kosolapenko"
+      }
+    }
+  },
+  {
+    "Action": "read_Teacher",
+    "Teacher": {
+      "Person": {
+        "ID": 201
+      }
+    }
+  },
+  {
+    "Action": "delete_Teacher",
+    "Teacher": {
+      "Person": {
+        "ID": 201
+      }
+    }
+  }
+]

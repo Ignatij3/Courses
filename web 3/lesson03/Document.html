@@ -1,0 +1,53 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<style type="text/css">
+img {width:275px; height:175px; border:5px inset yellowgreen;}
+</style>
+</HEAD>
+<BODY>
+<script language="JavaScript">
+document.bgColor ="wheat"; 
+document.fgColor ="black"; 
+document.bgColor = prompt ("Введите желаемый цвет страницы","wheat");
+document.fgColor = prompt ("Введите желаемый цвет текста","black");
+</script>
+<form name="Decision">
+<fieldset name="Set_1">
+<legend>Это HTML</legend>
+	<p>
+		<img name="Picture_1" src="../image/images001.jpg">
+		<img name="Picture_2" src="../image/images002.jpg"><br>
+		<input name="Field_1" type="text" value="Picture_1" size="36" readonly>
+		<input name="Field_2" type="text" value="Picture_2" size="36" readonly>
+	</p>
+</fieldset>
+<script language="JavaScript">
+document.write("<fieldset name='Set_2'>");
+document.write("<legend>Это JavaScript</legend>");
+document.write("<img name='Picture_3' src='../image/images00"+prompt('Введите номер картинки Picture_3', '3')+".jpg'>");
+document.write("<img name='Picture_4' src='../image/images00"+prompt('Введите номер картинки Picture_4', '4')+".jpg'><br>");
+document.write("<input name='Field_3' type='text' value='Picture_3' size='36' readonly>");
+document.write("<input name='Field_4' type='text' value='Picture_4' size='36' readonly>");
+document.write("</fieldset>");
+alert("Страница загружена!")
+document.write("<h3><b>Перечень объектов на странице</b><br></h3>");
+document.write("<br><b>Количество картинок:"+document.images.length+"</b><br>");
+document.write("<br>Имена картинок:"+document.images.length+"</b><br>");
+document.write(document.images[0].name, "<br>")
+document.write(document.images[1].name, "<br>")
+document.write(document.images[2].name, "<br>")
+document.write(document.images[3].name, "<br>")
+document.write("<br><b>Количество форм:"+document.forms.length+"</b><br><br>");
+document.write("Имя формы:"+document.forms[0].name+ "<br>")
+document.write("Количество элементов в форме:"+document.Decision.elements.length+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[0].name+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[1].name+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[2].name+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[3].name+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[4].name+ "<br>")
+document.write("Элементы формы:"+document.Decision.elements[5].name+ "<br>")
+</script>
+</BODY>
+</HTML>

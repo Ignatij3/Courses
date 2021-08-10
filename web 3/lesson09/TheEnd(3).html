@@ -1,0 +1,89 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>The End</TITLE>
+<style type="text/css">
+body {background-color:wheat}
+img {border:5px inset yellowgreen;}
+p {position:relative; top:100px; text-align:center;}
+</style>
+</HEAD>
+<BODY>
+<script language="JavaScript">
+TheLastOne = new Array;
+var s = 0
+for (n = 0; n < 9; n++) {
+	TheLastOne[n] = new Image()
+	TheLastOne[n].src = "../image/images00"+n+".jpg";
+	if (s < 14) {
+		s+=2;
+	} else {
+		s++;
+	}
+}
+</script>
+</HEAD>
+<BODY onLoad="Reboot()">
+<script language="JavaScript">
+var x = 0;
+var y = 0;
+var wh = 600;
+var ht = 300;
+function Reboot() {
+	/*if (x == 0) {
+		document.Resised.width = '300';
+		document.Resised.height = '150';
+		setTimeout ("Reboot()", 1000);
+		x++;
+	} else if  (x == 1) {
+			document.Resised.width = '150';
+			document.Resised.height = '75';
+			setTimeout ("Reboot()", 1000);
+			x++;
+			y++;
+		} else if  (x == 2) {
+				document.Resised.width = '40';
+				document.Resised.height = '20';
+				document.Resised.src = TheLastOne[y].src;
+				setTimeout ("Reboot()", 1000);
+				x++;
+				if  (y == 9) {
+					y = 0;
+				}
+			} else if  (x == 3) {
+					document.Resised.width = '150';
+					document.Resised.height = '75';
+					setTimeout ("Reboot()", 1000);
+					x++;
+				} else if  (x == 4) {
+						document.Resised.width = '300';
+						document.Resised.height = '150';
+						setTimeout ("Reboot()", 1000);
+						x++;
+					} else if  (x == 5) {
+							document.Resised.width = '600';
+							document.Resised.height = '300';
+							setTimeout ("Reboot()", 1000);
+							x = 0;
+						} else {
+							alert ("ERROR!")
+						}*/
+for (var m = 0;) {
+	if (wh == 600) {
+		wh--;
+		ht--;
+		setTimeout ("Reboot()", 10);
+	} else {
+		wh++;
+		ht++;
+		setTimeout ("Reboot()", 10);
+	}
+}
+}
+// if x == ~6 x--; else x++ цикл фор wh--
+</script>
+<p class="p1"><script language="JavaScript">
+document.write('<img name="Resised" src='+TheLastOne[0].src+'>');
+</script></p>
+</BODY>
+</HTML>

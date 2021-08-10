@@ -1,0 +1,78 @@
+package main
+
+import (
+	"fmt"
+	"github.com/veandco/go-sdl2/sdl"
+	"math"
+)
+
+var winTitle string = "Circle"
+var winWidth, winHeight int32 = 800, 600
+
+func circle(renderer *sdl.Renderer, c sdl.Point, r int32) {
+	p:= make([]sdl.Point, 0)
+	x, y := float64(r), 0.0		// starting point
+	fi:= 1.0/float64(r)			// angle between adjacent vertices
+	cos, sin := math.Cos(fi), math.Sin(fi)
+
+	// build quarter of circum
+	for i:= 0; float64(i)<0.5*math.Pi*float64(r); i++  {
+	// Variant:
+	// for x > 0.0  {	
+		p = append(p, sdl.Point{int32(math.Round(x)), int32(math.Round(y))})	
+		x, y = x*cos - y*sin, x*sin+y*cos
+	}	
+	
+	pp:= make([]sdl.Point, len(p))
+	for i, v:= range p  {
+		pp[i] = sdl.Point{c.X+v.X, c.Y+v.Y}
+	}	
+	renderer.DrawLines(pp)
+	for i, v:= range p  {
+		pp[i] = sdl.Point{c.X-v.Y, c.Y+v.X}
+	}	
+	renderer.DrawLines(pp)
+	for i, v:= range p  {
+		pp[i] = sdl.Point{c.X-v.X, c.Y-v.Y}
+	}	
+	renderer.DrawLines(pp)
+	for i, v:= range p  {
+		pp[i] = sdl.Point{c.X+v.Y, c.Y-v.X}
+	}	
+	renderer.DrawLines(pp)
+	return 
+}
+
+func main() {
+	err := sdl.Init(sdl.INIT_EVERYTHING)
+	if err != nil {
+		fmt.Printf("Failed to initialize SDL: %s\n", err)
+		return
+	}
+	var window *sdl.Window
+	var renderer *sdl.Renderer
+	window, err = sdl.CreateWindow(winTitle, sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED,
+		winWidth, winHeight, sdl.WINDOW_SHOWN)
+	if err != nil {
+		fmt.Printf("Failed to create window: %s\n", err)
+		return 
+	}
+	defer window.Destroy()
+	renderer, err = sdl.CreateRenderer(window, -1, sdl.RENDERER_ACCELERATED)
+	if err != nil {
+		fmt.Printf("Failed to create renderer: %s\n", err)
+		return
+	}
+	defer renderer.Destroy()
+	renderer.SetDrawColor(255, 255, 255, 255) 
+	renderer.Clear()
+	renderer.Present()
+
+	renderer.SetDrawColor(0, 0, 0, 255)
+	for r:= 20; r<=200; r += 20 {
+		circle(renderer, sdl.Point{winWidth/2, winHeight/2}, int32(r))
+	}
+	renderer.Present()
+	sdl.Delay(5000)
+	sdl.Quit()
+}

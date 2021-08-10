@@ -1,0 +1,43 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+p.p1 {margin-top:100px; text-align:center;}
+p.p2 {text-align:center;}
+img {width:275px; height:150px; border: 5px inset yellowgreen;}
+</style>
+<script language="JavaScript">
+var foto1 = new Image
+foto1.src = IMGLoad()
+var foto2 = new Image
+foto2.src = IMGLoad()
+var foto3 = new Image
+foto3.src = IMGLoad()
+var foto4 = new Image
+foto4.src = IMGLoad()
+var foto5 = new Image
+foto5.src = IMGLoad()
+var foto6 = new Image
+foto6.src = IMGLoad()
+function IMGLoad() {
+		n = prompt('Введите номер картинки ','14');
+		return ('../image/images00'+n+'.jpg');
+	}
+</script>
+</HEAD>
+<BODY>
+<p class="p1">
+<script language="JavaScript">
+	document.write('<img name="Image_01" SRC="'+foto1.src+'">');
+	document.write('<img name="Image_02" SRC="'+foto2.src+'"><br>');
+	document.write('<img name="Image_03" SRC="'+foto3.src+'">');
+	document.write('<img name="Image_04" SRC="'+foto4.src+'"><br>');
+	document.write('<img name="Image_05" SRC="'+foto5.src+'">');
+	document.write('<img name="Image_06" SRC="'+foto6.src+'">');
+</script>
+</p>
+<p class="p2"><a href="EditF2.html">Switch</a></p>
+</BODY>
+</HTML>

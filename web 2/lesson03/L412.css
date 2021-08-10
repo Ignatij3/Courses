@@ -1,0 +1,43 @@
+H2 {
+  text-align:center;
+  letter-spacing:3px;
+  }
+  P {
+  text-indent:5%;
+  text-align:justify;
+  font-size:large;
+  }
+  EM.a {
+  color:green;
+  }
+  EM.b {
+  color:white;
+  }
+  EM.c {
+  color:blue;
+  }
+  BODY.a {
+  background-color:silver;
+  }
+  H1.a {
+  background-color:yellow;
+  text-align:center;
+  }
+
+SPAN.a {
+   color:white;
+   font-weight:bold;
+   } 
+   SPAN.b {
+   color:yellow;
+   font-family:courier new;
+   }
+   SPAN.c {
+   color:red;
+   }
+  BODY.b {
+  background-color:blue;
+  }
+  H1.b {
+  font-style:italic;
+  }

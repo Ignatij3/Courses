@@ -1,0 +1,88 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>Choise2</TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+table {position:relative; top:100px;}
+th {vertical-align:middle;}
+img {border:5px inset yellowgreen; height:300px; width:450px;}
+p {position:relative; top:100px; text-align:center;}
+</style>
+<script language="JavaScript">
+var n = 1;
+var x = 0;
+function Switch(x) {
+		if (x == 0)
+		n--;
+		else
+		n++;
+			switch (n) {
+				case 1:
+				document.ImageZX.src = "../image/images004.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr1";
+				break;
+				case 2:
+				document.ImageZX.src = "../image/images005.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr2";
+				break;
+				case 3:
+				document.ImageZX.src = "../image/images006.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr3";
+				break;
+				case 4:
+				document.ImageZX.src = "../image/images007.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr4";
+				break;
+				case 5:
+				document.ImageZX.src = "../image/images008.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr5";
+				break;
+				case 6:
+				document.ImageZX.src = "../image/images009.jpg";
+				document.Ftxt.Desc.value = "Картинка Nr6";
+				break;
+		
+	default:
+	alert ("Это крайняя картинка")
+	if (x == 0)
+	n = 1;
+	else
+	n = 6;
+	}
+}
+</script>
+</HEAD>
+<BODY>
+<table align="center">
+
+<tr>
+
+	<th>
+		<input type="button" name="but1" value="<--" onclick="Switch(0)">
+	</th>
+	<th>
+		<img name="ImageZX" src="../image/images004.jpg">
+	</th>
+	<th>
+		<input type="button" name="but2" value="-->" onclick="Switch(1)">
+	</th>
+
+</tr>
+
+<tr>
+
+	<th colspan="3">
+	<form name="Ftxt">
+	<input type="text" name="Desc" value="Картинка Nr1" readonly>
+	</form>
+	</th>
+
+</tr>
+
+</table>
+
+
+<p><a href="Choise.html">Back</a></p>
+</BODY>
+</HTML>

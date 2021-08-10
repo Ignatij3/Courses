@@ -1,0 +1,60 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>The End</TITLE>
+<style type="text/css">
+body {background-color:wheat}
+img {border:5px inset yellowgreen;}
+p {position:relative; top:100px; text-align:center;}
+</style>
+</HEAD>
+<BODY>
+<script language="JavaScript">
+TheLastOne = new Array;
+var n = 0;
+var s = 0;
+var x = 0;
+var y = 0;
+var wh = 600;
+var ht = 300;
+for (n = 0; n < 9; n++) {
+	TheLastOne[n] = new Image()
+	TheLastOne[n].src = "../image/images00"+s+".jpg";
+	if (s < 14) {
+		s += 2;
+	} else {
+		s++;
+	}
+}
+</script>
+</HEAD>
+<BODY onLoad="Reboot()">
+<script language="JavaScript">
+function Reboot() {
+		if (ht == 300) {
+			x = 0;
+			y++;
+			if (y == 9) {
+				y = 0;
+			}
+		} else if (ht == 20) {
+			x = 1;
+			document.Resised.src = TheLastOne[y].src;
+		}
+			if (x == 0) {
+				wh -= 2;
+				ht--;
+			} else if (x == 1) {
+				wh += 2;
+				ht++;
+			}
+		document.Resised.width = wh;
+		document.Resised.height = ht;
+		setTimeout ("Reboot()", 10);
+}
+</script>
+<p class="p1"><script language="JavaScript">
+document.write('<img name="Resised" src='+TheLastOne[0].src+' width="600" height="300">');
+</script></p>
+</BODY>
+</HTML>

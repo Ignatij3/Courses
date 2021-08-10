@@ -1,0 +1,9 @@
+{
+  "Person": {
+    "ID": 101,
+    "Name": "Josie",
+    "Surname": "Viccary"
+  },
+  "Room": 116,
+  "Phone": "+371 27 357 228"
+}

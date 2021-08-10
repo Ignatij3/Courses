@@ -1,0 +1,38 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<style type="text/css">
+table {margin-top:100px;}
+td {border: 5px inset yellowgreen;}
+img {height:200px; width:300px;}
+body {background-color:wheat;}
+</style>
+<script language="JavaScript">
+var w1 = ""+prompt('Введите номер картинки', '5')+"";
+var w2 = ""+prompt('Введите номер картинки', '6')+"";
+var w3 = ""+prompt('Введите номер картинки', '12')+"";
+var foto1 = new Image;
+foto1.src = '../image/images00'+w1+'.jpg';
+var foto2 = new Image;
+foto2.src = '../image/images00'+w2+'.jpg';
+var foto3 = new Image;
+foto3.src = '../image/images00'+w3+'.jpg';
+</script>
+</HEAD>
+<BODY>
+<table align="center">
+
+<tr>
+
+	<script language="JavaScript">
+		document.write("<td><img src="+foto1.src+"></td>");
+		document.write("<td><img src="+foto2.src+"></td>");
+		document.write("<td><img src="+foto3.src+"></td>");
+	</script>
+
+</tr>
+
+</table>
+</BODY>
+</HTML>

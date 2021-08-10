@@ -1,0 +1,60 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<STYLE type="text/css">
+IMG.a {width:200px;}
+BODY {padding-left:100}
+</STYLE>
+</HEAD>
+<BODY>
+ <H2>Событие onClick</H2>
+ 
+	 <IMG name="pic0" src="../image/images000.jpg" class="a" onClick="document.pic0.src='../image/images001.jpg';"><BR>
+	 <BR>
+	 <IMG name="pic01" src="../image/images000.jpg" class="a" onClick="alert('вывод имени файла='+document.pic01.src);"><BR>
+ 
+	 <FORM name="MyForm">
+	 <IMG name="pic1" src="../image/images002.jpg" class="a"><BR>
+	 <INPUT type="button" name="click" onClick="document.pic1.src='../image/images003.jpg';" value="Нажми!">
+	</FORM>
+
+	 <IMG name="pic2" src="../image/images002.jpg" class="a"><BR>
+	 <FORM name="MyForm1">
+	 Один<INPUT type="radio" name="choice" onClick="document.pic2.src='../image/images002.jpg';" checked>
+	 Два<INPUT type="radio" name="choice" onClick="document.pic2.src='../image/images003.jpg';" >
+	 Три<INPUT type="radio" name="choice" onClick="document.pic2.src='../image/images004.jpg';" >
+	</FORM>
+
+	<FORM name="MyForm2">
+	<IMG name="pic21" src="../image/images002.jpg" class="a"><BR>
+	<INPUT type="checkbox" name="check" onClick="document.pic21.src='../image/images000.jpg';">
+	</FORM>
+
+	<IMG name="pic3" src="../image/images006.jpg" class="a"><BR>
+	<A href="javascript:void(0);" onClick="document.pic3.src='../image/images003.jpg';">Нажми!</A><BR>
+	<BR>
+
+	<A href="javascript:void(0)" onClick="document.pic4.src='../image/images006.jpg';">
+	<IMG name="pic4" src="../image/images007.jpg" class="a" alt="Нажми!"></A>
+	<HR>
+
+ <H2>События onMouseOver и onMouseOut</H2>
+  
+	 <IMG name="pic5" SRC="../image/images008.jpg" width="200"  
+	 onMouseOver="document.pic5.width='300';" 
+	 onMouseOut="document.pic5.width='200'" style="cursor:pointer;"><BR>
+	 <BR>
+ 
+	 <IMG name="pic6" SRC="../image/images008.jpg" class="a"  
+	 onMouseOver="document.pic6.src='../image/images009.jpg';" 
+	 onMouseOut="document.pic6.src='../image/images008.jpg';" style="cursor:pointer;"><BR>
+	 <BR>
+	 
+	<A href="javascript:void(0);" 
+	onMouseOver="document.pic7.width='300';" 
+	onMouseOut="document.pic7.width='200';" > 
+	<IMG name="pic7" SRC="../image/images0010.jpg"  width='200'></A>
+ 
+</BODY>
+</HTML>

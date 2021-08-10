@@ -1,0 +1,35 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>ImgArr2</TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+img {border:5px inset yellowgreen; height:300px; width:600px;}
+p.p1 {position:relative; top:100px; text-align:center;}
+p.p2 {position:relative; top:100px; text-align:center;}
+</style>
+<script language="JavaScript">
+FotoArr = new Array;
+var n = 0
+var s = 0
+for (n = 0; n < 8; n++) {
+	FotoArr[n] = new Image()
+	FotoArr[n].src = "../image/images00"+s+".jpg";
+	s+=2;
+}
+</script>
+</HEAD>
+<BODY onLoad="Active()">
+<script language="JavaScript">
+function Active() {
+	n++;	if (n > 7) n = 0;
+	document.Multiple.src = FotoArr[n].src;
+	setTimeout ("Active()", 1250);
+}
+</script>
+<p class="p1"><script language="JavaScript">
+document.write('<img name="Multiple" src='+FotoArr[0].src+'>');
+</script></p>
+<p class="p2"><a href="ImgArr.html">Back</a></p>
+</BODY>
+</HTML>

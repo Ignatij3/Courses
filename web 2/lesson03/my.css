@@ -1,0 +1,20 @@
+﻿BODY {background:bisque;}
+P.pp1 {font-family: Courier New;
+	  font-size: x-large;}
+SPAN.ss1 {color:navy; 
+	     font-weight:bold;
+		 font-style:italic;}
+P.pp2 	{font-size: small; 
+		 color:navy;
+		 font-style:italic;}
+SPAN.ss2 {font-weight:bold;
+		 font-size: large; 
+		 color:black;
+		 font-style:italic;}	 
+SPAN.ss3{font-family: Courier New; 
+		  color: navy;
+		  font-size: large;
+		  font-weight:bold;
+		  font-style:italic;}
+H2.hh {color: red;
+       font-family: Arial;} 

@@ -1,0 +1,89 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE>Задание 8</TITLE>
+<STYLE type="text/css">
+IMG {width:180px; height:80px;border:1px solid black;}
+</STYLE>
+ <SCRIPT language="JavaScript"> 
+  var k="../image/"
+  foto = new Array; 
+  foto[0]=k+"images000.jpg";
+  foto[1]=k+"images001.jpg";  
+  foto[2]=k+"images004.jpg";
+  foto[3]=k+"images008.jpg"; 
+  foto[4]=k+"images002.jpg";
+  foto[5]=k+"images003.jpg";
+  foto[6]=k+"images005.jpg";
+ </SCRIPT> 
+</HEAD>
+<BODY>
+<SCRIPT language="JavaScript">
+document.write('<H1> Пример 1</H1>');
+document.write('<H3>Последовательный вывод масива с описанием картинок</H3>');
+document.write('<IMG src="'+foto[0]+'">'); 
+document.write('<IMG src="'+foto[1]+'">'); 
+document.write('<IMG src="'+foto[2]+'">'); 
+document.write('<IMG src="'+foto[3]+'">'); 
+document.write('<IMG src="'+foto[4]+'">'); 
+document.write('<IMG src="'+foto[5]+'">'); 
+document.write('<IMG src="'+foto[6]+'">'); 
+//-------------------
+
+
+document.write('<HR><H1> Пример 2</H1>');	
+document.write('<H3>Вывод масива картинок в цикле While  </H3>');
+var i=0;
+while (i<7) {
+document.write('<IMG src="'+foto[i]+'">'); 
+  i++;
+  		 }
+  
+//-------------------
+document.write('<HR><H1> Пример 3</H1>');	
+document.write('<H3>Вывод масива картинок в цикле While +length </H3>');
+var i=0;
+ while (i<foto.length) {
+ document.write('<IMG src="'+foto[i]+'">'); 
+ i++;
+						}
+							
+//-------------------
+document.write('<HR><H1> Пример 4</H1>');	
+	document.write('<H3>Вывод масива картинок в цикле FOR</H3>');
+	for (var i=0; i<foto.length ;i++)  
+	document.write('<IMG src="'+foto[i]+'">'); 
+
+ //-------------------
+ document.write('<HR><H1> Пример 5</H1>');	
+	 document.write('<H3>Вывод масива картинок в цикле FOR и с IF  </H3>');
+	 var j=0;
+	 document.write('<center>');
+	 for (var i=0; i<7 ;i++)  {
+	 document.write('<IMG src="'+foto[i]+'">'); 
+	 j++;
+	 if (j==3) 	{
+	 document.write("<BR>");
+	 j=0;
+	 }
+	 }
+	  document.write('</center>');
+ </SCRIPT>
+ 
+ <!------------------->
+<HR><H1> Пример 6</H1>	
+ <H3>Вывод масива картинок в таблицу в цикле FOR(двойном)  </H3>
+ <TABLE  border=1  align="center">
+	 <SCRIPT language="JavaScript"> 
+	  for (var i=0; i<foto.length-1 ; i=i+3)  {
+	  document.write("<TR>");
+	  for (var j=i; (j<i+3 && j<foto.length) ; j++)   
+	  document.write('<TD align="center"><IMG src="'+foto[j]+'"></TD>'); 
+	  document.write("</TR>");
+	  }
+  
+</SCRIPT> 
+ </TABLE>  
+ </SCRIPT>
+</BODY>
+</HTML>

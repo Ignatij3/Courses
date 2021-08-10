@@ -1,0 +1,50 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<style type="text/css">
+body {background-color:wheat;}
+table {margin-top:100px; border: 3px inset yellowgreen;}
+th.thm {width:425px; height:325; border: 5px inset yellowgreen;}
+th {border: 5px inset yellowgreen;}
+p {text-align:center;}
+</style>
+</HEAD>
+<BODY>
+<form name="picturesw">
+<table align="center">
+
+<tr>
+
+	<th class="thm">
+		<img name="Image_1" src="../image/enot.jpg" height="200" width="325"
+		onMouseOver="document.Image_1.height='300', width='425';"
+		onMouseOut="document.Image_1.height='225', width='300'">
+	</th>
+
+</tr>
+
+<tr>
+
+	<th>
+		<p>
+			<input type="text" name="table" value="" size="45" readonly><br>
+			<input type="radio" name="picsw" value="pic01" checked onClick="document.Image_1.src='../image/enot.jpg', document.picturesw.table.value=document.Image_1.src;">
+			<input type="radio" name="picsw" value="pic02" onClick="document.Image_1.src='../image/podsnegnik.jpg', document.picturesw.table.value=document.Image_1.src;">
+			<input type="radio" name="picsw" value="pic03" onClick="document.Image_1.src='../image/akula.jpg', document.picturesw.table.value=document.Image_1.src;">
+			<input type="radio" name="picsw" value="pic04" onClick="document.Image_1.src='../image/pic2.jpg', document.picturesw.table.value=document.Image_1.src;">
+			<input type="radio" name="picsw" value="pic05" onClick="document.Image_1.src='../image/repejnik.jpg', document.picturesw.table.value=document.Image_1.src">
+		</p>
+	</th>
+
+</tr>
+
+</table>
+
+</form>
+<script language="JavaScript">
+	document.picturesw.table.value=document.Image_1.src;
+</script>
+<p><a href="JS_Img.html">Back</a></p>
+</BODY>
+</HTML>

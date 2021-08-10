@@ -1,0 +1,34 @@
+﻿<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+<TITLE></TITLE>
+<STYLE type="text/css">
+IMG {height:80px;width:150px;border:1px solid black;}
+</STYLE>
+<SCRIPT language="JavaScript">
+// Описание картинки как переменной
+fotoS1='../image/images000.jpg';
+fotoS2='../image/images001.jpg';
+
+// Описание картинки как объект
+foto1 = new Image;
+foto1.src='../image/images001.jpg';
+foto2 = new Image;
+foto2.src='../image/images002.jpg';
+
+</SCRIPT>
+</HEAD>
+<BODY>
+	<H3>Пример1 (описание картинок c использованием переменнох типа “строка”)</H3>
+		<SCRIPT language="JavaScript">
+		document.write("<img src="+fotoS1+">&nbsp");
+		document.write("<img src="+fotoS2+"><BR>");
+		</SCRIPT>
+	
+	<H3>Пример2 (описание картинок с использованием нового объекта типа Image)</H3>
+		<SCRIPT language="JavaScript">
+		document.write("<img src="+foto1.src+">&nbsp");
+		document.write("<img src="+foto2.src+">&nbsp");
+		</SCRIPT>
+</BODY>
+</HTML>

@@ -1,0 +1,21 @@
+  H2 {
+  text-align:center;
+  letter-spacing:3px;
+  }
+  P {
+  text-indent:5%;
+  text-align:justify;
+  font-size:large;
+  }
+  EM.a {
+  color:green;
+  }
+  EM.b {
+  color:white;
+  }
+  EM.c {
+  color:blue;
+  }
+  BODY {
+  background-color:silver;
+  }

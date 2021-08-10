@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+  <p>Url</p>
+  <input type="text" id="url" name="url"><br><br>
+  <p>Method</p>
+  <select id="method" name="Method" onchange="methodSelect()"> 
+	<option value="GET">Get</option>
+	<option value="POST">Post</option>
+	<option value="PUT">Put</option> 
+	<option value="DELETE">Delete</option>
+  </select> <br><br>
+  <div id="Post" hidden>
+	<p>Post Body</p>
+	<input type="text" id="pbody" name="pbody"><br><br>
+  </div>
+  <div id="Put" hidden>
+	<p>Put Body</p>
+	<input type="text" id="putbody" name="putbody"><br><br>
+  </div>
+  <div id="Delete" hidden>
+	<p>Delete Body</p>
+	<input type="text" id="dbody" name="dbody"><br><br>
+  </div>
+  
+  <button type="button" onclick="pop()">Click Me!</button>
+</body>
+</html>

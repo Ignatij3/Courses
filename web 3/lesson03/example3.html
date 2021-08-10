@@ -1,0 +1,30 @@
+﻿<HTML>
+<HEAD>
+<TITLE>Опыты над методами и свойствами объекта Document</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ </HEAD>
+<BODY>
+<H1>Опыты над методами и свойствами объекта Document</H1> 
+<SCRIPT language="JavaScript">
+document.bgColor ="yellow"; 
+document.fgColor ="green"; 
+document.write("Код цвета страницы начальный - " + document.bgColor); 
+document.write("<BR>");
+document.write("Код цвета текста начальный- " + document.fgColor); 
+document.write("<BR>")
+alert("Код цвета страницы "+ document.bgColor); 
+//-----------------
+document.bgColor= prompt ("Введите желаемый цвет страницы","white");
+document.fgColor= prompt ("Введите желаемый цвет текста","black");
+//-----------------
+document.write("Код цвета страницы изменили - " + document.bgColor); 
+document.write("<BR>");
+document.write("Код цвета текста изменили - " + document.fgColor); 
+alert("Код цвета страницы "+ document.bgColor+"\n Код цвета букв "+document.fgColor);
+//-----------------
+document.write("<BR><BR>Заглавие документа - "+ document.title);
+document.write("<BR>Интернет-адрес Web-страницы - "+ document.URL);
+
+</SCRIPT>
+</BODY>
+</html>
