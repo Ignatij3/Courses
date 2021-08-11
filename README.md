@@ -25,15 +25,15 @@
 ### Golang network semester
 > This is the work I've done throughout network-communication learning semester.
 > 
-> ##### Some files and folders like *send-file-via-http-master*, *Examples* and html clients along with .js scripts are not mine
+> #### Some files and folders like *send-file-via-http-master*, *Examples* and html clients along with .js scripts are not mine
 
 ### Web 1st semester
 > Here I was getting to know **html**.
 > 
 > Nothing much, just simple web pages.
 
-# Web 2nd semester
+### Web 2nd semester
 > Here are a bit more advanced web pages, made using **html** and **css** to imrove their appearance.
 
-# Web 3rd semester
+### Web 3rd semester
 > The pages I made here are using **JavaScript**, alongside stuff I already learnt.
