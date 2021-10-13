@@ -61,12 +61,12 @@ namespace screen
         objects.second.insert(objects.second.end(), figure);
     }
 
-    void Window::SetColor(shape::Shape* figure, const ALLEGRO_COLOR col)
+    void Window::SetColor(shape::Shape* figure, ALLEGRO_COLOR col)
     {
         figure->color = col;
     }
 
-    void Window::AddObject(shape::Shape* figure, const ALLEGRO_COLOR col)
+    void Window::AddObject(shape::Shape* figure, ALLEGRO_COLOR col)
     {
         SetColor(figure, col);
         AddObject(figure);
@@ -74,28 +74,31 @@ namespace screen
 
     void Window::ManageCollisions() const
     {
-        for (auto object1 = objects.second.begin(); object1 != objects.second.end(); ++object1)
+        if (objects.second.size() > 1)
         {
-            //check for collisions between objects
-            for (auto object2 = ++object1; object2 != objects.second.end(); ++object2)
+            for (auto object1 = objects.second.begin(); object1 != objects.second.end(); ++object1)
             {
-                std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*object2);
-                if (res.first)
+                //check for collisions between objects
+                for (auto object2 = ++object1; object2 != objects.second.end(); ++object2)
                 {
-                    (*object1)->Reflect(res.second.getAngle());
-                    (*object1)->Move();
-                    (*object2)->Move();
+                    std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*object2);
+                    if (res.first)
+                    {
+                        (*object1)->Reflect(res.second.getAngle());
+                        (*object1)->Move();
+                        (*object2)->Move();
+                    }
                 }
-            }
 
-            //check for collisions between object and a vector
-            for (auto vector = objects.first.begin(); vector != objects.first.end(); ++vector)
-            {
-                std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*vector);
-                if (res.first)
+                //check for collisions between object and a vector
+                for (auto vector = objects.first.begin(); vector != objects.first.end(); ++vector)
                 {
-                    (*object1)->Reflect(res.second.getAngle());
-                    (*object1)->Move();
+                    std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*vector);
+                    if (res.first)
+                    {
+                        (*object1)->Reflect(res.second.getAngle());
+                        (*object1)->Move();
+                    }
                 }
             }
         }

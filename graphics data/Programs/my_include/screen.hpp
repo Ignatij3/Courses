@@ -33,8 +33,8 @@ namespace screen
         void Run(FpsCallback fpsCallback, DrawCallback drawCallback);
         void AddObject(shape::Vector*);
         void AddObject(shape::Shape* figure);
-        void SetColor(shape::Shape* figure, const ALLEGRO_COLOR col);
-        void AddObject(shape::Shape* figure, const ALLEGRO_COLOR col);
+        void SetColor(shape::Shape* figure, ALLEGRO_COLOR col);
+        void AddObject(shape::Shape* figure, ALLEGRO_COLOR col);
         void ManageCollisions() const;
         void MoveAll();
         void DrawAll() const;

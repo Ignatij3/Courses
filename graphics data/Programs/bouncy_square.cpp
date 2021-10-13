@@ -8,7 +8,7 @@
 const ALLEGRO_COLOR RED   = al_map_rgb(255, 0, 0);
 const ALLEGRO_COLOR WHITE = al_map_rgb(255, 255, 255);
 
-screen::Window window(120, 1200, 720);
+screen::Window window(60, 1200, 720);
 
 void NextFrame()
 {
@@ -24,10 +24,10 @@ void Draw()
 
 int main()
 {
-    shape::Square sqr1(100, 500, 40, 135);
+    //shape::Square sqr1(100, 500, 40, 135);
     //shape::Square sqr2(200, 200, 75, 330);
 
-    //shape::Square sqr1(70, 70, 40, 91);
+    shape::Square sqr1(50, 50, 40, 90);
     window.AddObject(&sqr1, RED);
     //window.AddObject(&sqr2);
     window.Run(&NextFrame, &Draw);
