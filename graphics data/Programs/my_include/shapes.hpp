@@ -34,13 +34,13 @@ namespace shape
     //vector defined with starting point and vector going from that point
     class Vector {
       private:
-        Point<double> a;
-        Point<double> b;
         double angle;
 
         void setAngle();
 
       public:
+        Point<double> a;
+        Point<double> b;
         ALLEGRO_COLOR color;
 
         Vector();
@@ -58,8 +58,8 @@ namespace shape
     //in circle, check for collision with vector pointing in move direction
     class Shape {
       protected:
-        Point<double> centre;
         double angle;
+        Point<double> centre;
         std::pair<double, double> direction;
         Vector sides[0];
 

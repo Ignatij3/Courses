@@ -1,6 +1,7 @@
 #include "shapes.hpp"
 
 #include <cmath>
+#include <iostream>
 
 namespace shape
 {
@@ -10,8 +11,9 @@ namespace shape
         angle = (angle < 0) ? 360 + angle : angle;
     }
 
-    Vector::Vector() :
-        Vector(Point<double>(0, 0), Point<double>(0, 0)) { }
+    Vector::Vector()
+    {
+    }
 
     Vector::Vector(Point<double> point, Point<double> vector) :
         a(point), b(vector)
@@ -50,6 +52,8 @@ namespace shape
 
     bool Vector::Cross(const Vector& lineb) const
     {
+        //printf("x1, y1: (%f, %f)\nx2, y2: (%f, %f)\n%f degrees\n", lineb.a.x, lineb.a.y, lineb.b.x, lineb.b.y, lineb.angle);
+
         auto sign = [](int x) -> char { return (x >= 0 ? '+' : '-'); };
 
         Vector ac(a, lineb.a);

@@ -28,6 +28,7 @@ int main()
     //shape::Square sqr2(200, 200, 75, 330);
 
     shape::Square sqr1(50, 50, 40, 90);
+
     window.AddObject(&sqr1, RED);
     //window.AddObject(&sqr2);
     window.Run(&NextFrame, &Draw);
