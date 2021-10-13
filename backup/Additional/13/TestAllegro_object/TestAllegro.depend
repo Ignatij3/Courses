@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1359877490 source:c:\vcode\progmeistars\cpp\2\testallegro\main.cpp
+	<iostream>
+	"AllegroUtil.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+
+1359847301 source:c:\vcode\progmeistars\cpp\2\testallegro\allegroutil.cpp
+	"AllegroUtil.hpp"
+	<iostream>
+
+1359845819 c:\vcode\progmeistars\cpp\2\testallegro\allegroutil.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1360504196 source:c:\vcode\progmeistars\cpp\testallegro_object\allegroutil.cpp
+	"AllegroUtil.hpp"
+	<iostream>
+
+1360504346 c:\vcode\progmeistars\cpp\testallegro_object\allegroutil.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1360504382 source:c:\vcode\progmeistars\cpp\testallegro_object\main.cpp
+	<iostream>
+	"AllegroBase.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+
+1360504346 c:\vcode\progmeistars\cpp\testallegro_object\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1360504506 source:c:\vcode\progmeistars\cpp\4\testallegro_object\allegrobase.cpp
+	"AllegroBase.hpp"
+	<iostream>
+
+1360504346 c:\vcode\progmeistars\cpp\4\testallegro_object\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1361073417 source:c:\vcode\progmeistars\cpp\4\testallegro_object\main.cpp
+	<iostream>
+	"AllegroBase.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+	<iostream>
+	"AllegroBase.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+
+1361683316 source:c:\vcode\progmeistars\cpp\5\testallegro_object\main.cpp
+	<iostream>
+	"AllegroBase.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+
+1361685962 c:\vcode\progmeistars\cpp\5\testallegro_object\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1361683915 source:c:\vcode\progmeistars\cpp\5\testallegro_object\allegrobase.cpp
+	"AllegroBase.hpp"
+	<iostream>
+
+1361683915 source:c:\vcode\progmeistars\cpp\9\testallegro_object\allegrobase.cpp
+	"AllegroBase.hpp"
+	<iostream>
+
+1361685962 c:\vcode\progmeistars\cpp\9\testallegro_object\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1361725042 source:c:\vcode\progmeistars\cpp\9\testallegro_object\main.cpp
+	<iostream>
+	"AllegroBase.hpp"
+	<windows.h>
+	<cstdlib>
+	<cstdio>
+
+1361687515 source:c:\vcode\progmeistars\cpp\10\testallegro_object\allegrobase.cpp
+	"AllegroBase.hpp"
+	<iostream>
+
+1361689562 c:\vcode\progmeistars\cpp\10\testallegro_object\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+

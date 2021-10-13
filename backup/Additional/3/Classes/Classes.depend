@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1359834216 source:c:\vcode\progmeistars\cpp\2\classes\main.cpp
+	<iostream>
+	<cmath>
+
+1423894543 source:c:\vcode\progmeistars\cpp\3\classes\main.cpp
+	<iostream>
+	<cmath>
+

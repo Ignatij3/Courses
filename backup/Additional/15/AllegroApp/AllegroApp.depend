@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1361687516 source:c:\vcode\progmeistars\cpp\15\allegroapp\allegrobase.cpp
+	"AllegroBase.hpp"
+	<iostream>
+
+1361689564 c:\vcode\progmeistars\cpp\15\allegroapp\include\allegrobase.hpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1367721759 source:c:\vcode\progmeistars\cpp\15\allegroapp\main.cpp
+

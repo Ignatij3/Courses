@@ -1,0 +1,4 @@
+C:/VCode/Progmeistars/CPP/16/gtest-1.6.0/mybuild/CMakeFiles/ALL_BUILD.dir
+C:/VCode/Progmeistars/CPP/16/gtest-1.6.0/mybuild/CMakeFiles/ZERO_CHECK.dir
+C:/VCode/Progmeistars/CPP/16/gtest-1.6.0/mybuild/CMakeFiles/gtest.dir
+C:/VCode/Progmeistars/CPP/16/gtest-1.6.0/mybuild/CMakeFiles/gtest_main.dir
