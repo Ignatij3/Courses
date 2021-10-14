@@ -1,7 +1,6 @@
 #include "shapes.hpp"
 
 #include <cmath>
-#include <iostream>
 
 namespace shape
 {
@@ -52,8 +51,6 @@ namespace shape
 
     bool Vector::Cross(const Vector& lineb) const
     {
-        //printf("x1, y1: (%f, %f)\nx2, y2: (%f, %f)\n%f degrees\n", lineb.a.x, lineb.a.y, lineb.b.x, lineb.b.y, lineb.angle);
-
         auto sign = [](int x) -> char { return (x >= 0 ? '+' : '-'); };
 
         Vector ac(a, lineb.a);
@@ -88,5 +85,15 @@ namespace shape
         int y2 = rhs.b.YDiff(rhs.a);
 
         return x1 * y2 - x2 * y1;
+    }
+
+    Vector& Vector::operator=(Vector&& rhs)
+    {
+        this->a     = rhs.a;
+        this->b     = rhs.b;
+        this->angle = rhs.angle;
+        this->color = rhs.color;
+
+        return *this;
     }
 }

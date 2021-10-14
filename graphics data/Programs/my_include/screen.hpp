@@ -8,7 +8,7 @@
 
 namespace screen
 {
-    extern shape::Vector walls[4];
+    inline shape::Vector walls[4];
 
     class Window {
       private:
