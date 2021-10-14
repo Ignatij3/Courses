@@ -31,7 +31,7 @@ namespace shape
         }
     };
 
-    //vector defined with starting point and vector going from that point
+    // vector defined with starting point and vector going from that point
     class Vector {
       private:
         double angle;
@@ -53,15 +53,14 @@ namespace shape
         bool Cross(const Vector& lineb) const;
         double Magnitude();
         int operator^(Vector& rhs) const;
+        Vector& operator=(Vector&& rhs);
     };
 
-    //in circle, check for collision with vector pointing in move direction
+    // in circle, check for collision with vector pointing in move direction
     class Shape {
       protected:
         double angle;
-        Point<double> centre;
         std::pair<double, double> direction;
-        Vector sides[0];
 
         virtual double LeftmostX() const  = 0;
         virtual double UppermostY() const = 0;
@@ -70,6 +69,8 @@ namespace shape
         virtual void SetSides()           = 0;
 
       public:
+        Vector sides[0];
+        Point<double> centre;
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
 
         Shape(Point<double> centreCoords, double alpha);
@@ -80,11 +81,11 @@ namespace shape
         virtual void Draw() const            = 0;
         void Reflect(double otherVectorAngle);
 
-        //setDirection sets shape's direction in degrees, where 0 points right and goes anticlockwise
-        //if alpha is smaller than 0 or greater than 360, direction is set to 0
+        // setDirection sets shape's direction in degrees, where 0 points right and goes anticlockwise
+        // if alpha is smaller than 0 or greater than 360, direction is set to 0
         void SetDirection(double alpha);
-        std::pair<bool, const Vector> getVectorIfCollide(const Shape* other) const;
-        std::pair<bool, const Vector> getVectorIfCollide(const Vector* other_vector) const;
+        std::pair<bool, const Vector*> getVectorIfCollide(const Shape* other) const;
+        std::pair<bool, const Vector*> getVectorIfCollide(const Vector* other_vector) const;
     };
 
     class Rectangle : public Shape {
@@ -92,8 +93,7 @@ namespace shape
 
     class Square : public Shape {
       private:
-        double edge; //distance from square's centre to edge
-        Vector sides[4];
+        double edge; // distance from square's centre to edge
 
         double LeftmostX() const override;
         double UppermostY() const override;
@@ -102,6 +102,7 @@ namespace shape
         void SetSides() override;
 
       public:
+        Vector sides[4];
         Square(Point<double> centreCoords, double side, double alpha);
         Square(double centreX, double centreY, double side, double alpha);
 

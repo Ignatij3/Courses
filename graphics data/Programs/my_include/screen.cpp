@@ -6,8 +6,6 @@
 
 namespace screen
 {
-    shape::Vector walls[4]; //TODO write copy-contructor
-
     Window::BadInit::BadInit(const std::string& msg) :
         message(msg) { }
 
@@ -116,6 +114,13 @@ namespace screen
     {
         for (auto obj = objects.second.begin(); obj != objects.second.end(); ++obj)
             (*obj)->Move();
+
+            printf("POINTER: %p\n", (*obj));
+            printf("MoveAll side[0]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[0].a.x, (*obj)->sides[0].a.y, (*obj)->sides[0].a.x + (*obj)->sides[0].b.x, (*obj)->sides[0].a.y + (*obj)->sides[0].b.y);
+            printf("MoveAll side[1]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[1].a.x, (*obj)->sides[1].a.y, (*obj)->sides[1].a.x + (*obj)->sides[1].b.x, (*obj)->sides[1].a.y + (*obj)->sides[1].b.y);
+            printf("MoveAll side[2]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[2].a.x, (*obj)->sides[2].a.y, (*obj)->sides[2].a.x + (*obj)->sides[2].b.x, (*obj)->sides[2].a.y + (*obj)->sides[2].b.y);
+            printf("MoveAll side[3]: %.0f %.0f %.0f %.0f\n\n", (*obj)->sides[3].a.x, (*obj)->sides[3].a.y, (*obj)->sides[3].a.x + (*obj)->sides[3].b.x, (*obj)->sides[3].a.y + (*obj)->sides[3].b.y);
+        }
     }
 
     void Window::DrawAll() const
@@ -123,5 +128,4 @@ namespace screen
         for (auto obj = objects.second.begin(); obj != objects.second.end(); ++obj)
             (*obj)->Draw();
     }
-
 }

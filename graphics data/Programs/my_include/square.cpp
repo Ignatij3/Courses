@@ -31,10 +31,15 @@ namespace shape
         double uy = this->UppermostY();
         double ly = this->LowermostY();
 
-        this->sides[0].SetCoordinates(lx, uy, this->edge * 2, 0); //top side
-        this->sides[1].SetCoordinates(rx, uy, 0, this->edge * 2); //right side
-        this->sides[2].SetCoordinates(lx, uy, 0, this->edge * 2); //left side
-        this->sides[3].SetCoordinates(lx, ly, this->edge * 2, 0); //bottom side
+        this->sides[0].SetCoordinates(lx, uy, this->edge * 2, 0); // top side
+        this->sides[1].SetCoordinates(rx, uy, 0, this->edge * 2); // right side
+        this->sides[2].SetCoordinates(lx, uy, 0, this->edge * 2); // left side
+        this->sides[3].SetCoordinates(lx, ly, this->edge * 2, 0); // bottom side
+
+        printf("side[0]: %.0f %.0f %.0f %.0f\n", sides[0].a.x, sides[0].a.y, sides[0].a.x + sides[0].b.x, sides[0].a.y + sides[0].b.y);
+        printf("side[1]: %.0f %.0f %.0f %.0f\n", sides[1].a.x, sides[1].a.y, sides[1].a.x + sides[1].b.x, sides[1].a.y + sides[1].b.y);
+        printf("side[2]: %.0f %.0f %.0f %.0f\n", sides[2].a.x, sides[2].a.y, sides[2].a.x + sides[2].b.x, sides[2].a.y + sides[2].b.y);
+        printf("side[3]: %.0f %.0f %.0f %.0f\n\n", sides[3].a.x, sides[3].a.y, sides[3].a.x + sides[3].b.x, sides[3].a.y + sides[3].b.y);
     }
 
     Square::Square(Point<double> centreCoords, double side, double alpha) :

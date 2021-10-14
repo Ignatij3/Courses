@@ -1,6 +1,7 @@
 #include "shapes.hpp"
 
 #include <cmath>
+#include <iostream>
 
 namespace shape
 {
@@ -40,14 +41,20 @@ namespace shape
         return std::make_pair(false, sides[0]);
     }
 
-    std::pair<bool, const Vector> Shape::getVectorIfCollide(const Vector* other_vector) const
+    std::pair<bool, const Vector*> Shape::getVectorIfCollide(const Vector* other_vector) const
     {
+
+        // printf("COLLISION side[0]: %.1f %.1f %.1f %.1f\n", sides[0].a.x, sides[0].a.y, sides[0].a.x + sides[0].b.x, sides[0].a.y + sides[0].b.y);
+        // printf("COLLISION side[1]: %.1f %.1f %.1f %.1f\n", sides[1].a.x, sides[1].a.y, sides[1].a.x + sides[1].b.x, sides[1].a.y + sides[1].b.y);
+        // printf("COLLISION side[2]: %.1f %.1f %.1f %.1f\n", sides[2].a.x, sides[2].a.y, sides[2].a.x + sides[2].b.x, sides[2].a.y + sides[2].b.y);
+        // printf("COLLISION side[3]: %.1f %.1f %.1f %.1f\n\n", sides[3].a.x, sides[3].a.y, sides[3].a.x + sides[3].b.x, sides[3].a.y + sides[3].b.y);
+
         for (int i = 0; i < sideAmount(); ++i)
         {
             if (sides[i].Cross(*other_vector))
-                return std::make_pair(true, *other_vector);
+                return std::make_pair(true, other_vector);
         }
 
-        return std::make_pair(false, sides[0]);
+        return std::make_pair(false, &sides[0]);
     }
 }
