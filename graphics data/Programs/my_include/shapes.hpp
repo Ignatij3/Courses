@@ -35,20 +35,20 @@ namespace shape
     class Vector {
       private:
         double angle;
-
-        void setAngle();
-
-      public:
         Point<double> a;
         Point<double> b;
+
+      public:
         ALLEGRO_COLOR color;
 
         Vector();
         Vector(Point<double> point, Point<double> vector);
         Vector(double x1, double y1, double x2, double y2);
+        Vector(const Vector& rhs) noexcept;
 
-        void SetCoordinates(Point<double> point, Point<double> vector);
-        void SetCoordinates(double x1, double y1, double x2, double y2);
+        void setAngle();
+        void SetVectors(Point<double> point, Point<double> vector);
+        void SetVectors(double x1, double y1, double x2, double y2);
         double getAngle() const;
         bool Cross(const Vector& lineb) const;
         double Magnitude();
@@ -60,6 +60,8 @@ namespace shape
     class Shape {
       protected:
         double angle;
+        std::vector<Vector> sides;
+        Point<double> centre;
         std::pair<double, double> direction;
 
         virtual double LeftmostX() const  = 0;
@@ -67,25 +69,25 @@ namespace shape
         virtual double RightmostX() const = 0;
         virtual double LowermostY() const = 0;
         virtual void SetSides()           = 0;
+        virtual void SetAngleSides()      = 0;
 
       public:
-        Vector sides[0];
-        Point<double> centre;
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
 
         Shape(Point<double> centreCoords, double alpha);
 
-        virtual const int sideAmount() const = 0;
-        virtual Shape* InitFromStdin() const = 0;
-        virtual void Move()                  = 0;
-        virtual void Draw() const            = 0;
+        virtual std::vector<Vector> GetSides() const = 0;
+        virtual const int sideAmount() const         = 0;
+        virtual Shape* InitFromStdin() const         = 0;
+        virtual void Move()                          = 0;
+        virtual void Draw() const                    = 0;
         void Reflect(double otherVectorAngle);
 
         // setDirection sets shape's direction in degrees, where 0 points right and goes anticlockwise
         // if alpha is smaller than 0 or greater than 360, direction is set to 0
         void SetDirection(double alpha);
-        std::pair<bool, const Vector*> getVectorIfCollide(const Shape* other) const;
-        std::pair<bool, const Vector*> getVectorIfCollide(const Vector* other_vector) const;
+        std::pair<bool, std::pair<const Vector, const Vector>> getVectorIfCollide(const Shape* other) const;
+        std::pair<bool, const Vector> getVectorIfCollide(const Vector* other_vector) const;
     };
 
     class Rectangle : public Shape {
@@ -93,6 +95,7 @@ namespace shape
 
     class Square : public Shape {
       private:
+        std::vector<Vector> sides;
         double edge; // distance from square's centre to edge
 
         double LeftmostX() const override;
@@ -100,12 +103,13 @@ namespace shape
         double RightmostX() const override;
         double LowermostY() const override;
         void SetSides() override;
+        void SetAngleSides() override;
 
       public:
-        Vector sides[4];
         Square(Point<double> centreCoords, double side, double alpha);
         Square(double centreX, double centreY, double side, double alpha);
 
+        std::vector<Vector> GetSides() const override;
         const int sideAmount() const override;
         Shape* InitFromStdin() const override;
         void Move() override;

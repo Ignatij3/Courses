@@ -1,6 +1,6 @@
 #include "shapes.hpp"
 
-#include <cstdio>
+#include <iostream>
 
 namespace shape
 {
@@ -26,28 +26,38 @@ namespace shape
 
     void Square::SetSides()
     {
-        double lx = this->LeftmostX();
-        double rx = this->RightmostX();
-        double uy = this->UppermostY();
-        double ly = this->LowermostY();
+        double lx = LeftmostX();
+        double rx = RightmostX();
+        double uy = UppermostY();
+        double ly = LowermostY();
 
-        this->sides[0].SetCoordinates(lx, uy, this->edge * 2, 0); // top side
-        this->sides[1].SetCoordinates(rx, uy, 0, this->edge * 2); // right side
-        this->sides[2].SetCoordinates(lx, uy, 0, this->edge * 2); // left side
-        this->sides[3].SetCoordinates(lx, ly, this->edge * 2, 0); // bottom side
+        sides[0].SetVectors(lx, uy, edge * 2, 0); // top side
+        sides[1].SetVectors(rx, uy, 0, edge * 2); // right side
+        sides[2].SetVectors(lx, uy, 0, edge * 2); // left side
+        sides[3].SetVectors(lx, ly, edge * 2, 0); // bottom side
+    }
 
-        printf("side[0]: %.0f %.0f %.0f %.0f\n", sides[0].a.x, sides[0].a.y, sides[0].a.x + sides[0].b.x, sides[0].a.y + sides[0].b.y);
-        printf("side[1]: %.0f %.0f %.0f %.0f\n", sides[1].a.x, sides[1].a.y, sides[1].a.x + sides[1].b.x, sides[1].a.y + sides[1].b.y);
-        printf("side[2]: %.0f %.0f %.0f %.0f\n", sides[2].a.x, sides[2].a.y, sides[2].a.x + sides[2].b.x, sides[2].a.y + sides[2].b.y);
-        printf("side[3]: %.0f %.0f %.0f %.0f\n\n", sides[3].a.x, sides[3].a.y, sides[3].a.x + sides[3].b.x, sides[3].a.y + sides[3].b.y);
+    std::vector<Vector> Square::GetSides() const
+    {
+        return sides;
+    }
+
+    void Square::SetAngleSides()
+    {
+        sides[0].setAngle();
+        sides[1].setAngle();
+        sides[2].setAngle();
+        sides[3].setAngle();
     }
 
     Square::Square(Point<double> centreCoords, double side, double alpha) :
         Shape(centreCoords, alpha),
-        edge((side < 0) ? 0 : side / 2)
+        edge((side < 0) ? 0 : side / 2),
+        sides(4, Vector())
     {
         SetDirection(alpha);
         SetSides();
+        SetAngleSides();
     }
 
     Square::Square(double centreX, double centreY, double side, double alpha) :

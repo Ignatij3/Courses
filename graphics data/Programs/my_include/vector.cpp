@@ -1,21 +1,16 @@
 #include "shapes.hpp"
 
 #include <cmath>
+#include <iostream>
 
 namespace shape
 {
-    void Vector::setAngle()
-    {
-        angle = atan2(a.YDiff(b), a.XDiff(b)) * 180 / PI;
-        angle = (angle < 0) ? 360 + angle : angle;
-    }
 
-    Vector::Vector()
-    {
-    }
+    Vector::Vector() { }
 
     Vector::Vector(Point<double> point, Point<double> vector) :
-        a(point), b(vector)
+        a(point),
+        b(vector)
     {
         setAngle();
     }
@@ -26,22 +21,34 @@ namespace shape
         setAngle();
     }
 
-    void Vector::SetCoordinates(Point<double> point, Point<double> vector)
+    Vector::Vector(const Vector& rhs) noexcept
+    {
+        this->a     = rhs.a;
+        this->b     = rhs.b;
+        this->angle = rhs.angle;
+        this->color = rhs.color;
+    }
+
+    void Vector::setAngle()
+    {
+        angle = atan2(a.YDiff(b), a.XDiff(b)) * (180 / PI);
+        angle = (angle < 0) ? 360 + angle : angle;
+    }
+
+    void Vector::SetVectors(Point<double> point, Point<double> vector)
     {
         a.x = point.x;
         a.y = point.y;
-        b.x = vector.x;
-        b.y = vector.y;
-        setAngle();
+        b.x = point.x + vector.x;
+        b.y = point.y + vector.y;
     }
 
-    void Vector::SetCoordinates(double x1, double y1, double x2, double y2)
+    void Vector::SetVectors(double x1, double y1, double x2, double y2)
     {
         a.x = x1;
         a.y = y1;
-        b.x = x2;
-        b.y = y2;
-        setAngle();
+        b.x = x1 + x2;
+        b.y = y1 + y2;
     }
 
     double Vector::getAngle() const
@@ -80,7 +87,7 @@ namespace shape
     int Vector::operator^(Vector& rhs) const
     {
         int x1 = b.XDiff(a);
-        int y1 = b.XDiff(a);
+        int y1 = b.YDiff(a);
         int x2 = rhs.b.XDiff(rhs.a);
         int y2 = rhs.b.YDiff(rhs.a);
 
@@ -89,10 +96,10 @@ namespace shape
 
     Vector& Vector::operator=(Vector&& rhs)
     {
-        this->a     = rhs.a;
-        this->b     = rhs.b;
-        this->angle = rhs.angle;
-        this->color = rhs.color;
+        a     = rhs.a;
+        b     = rhs.b;
+        angle = rhs.angle;
+        color = rhs.color;
 
         return *this;
     }

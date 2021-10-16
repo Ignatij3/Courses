@@ -32,20 +32,23 @@ namespace screen
             throw BadInit("Allegro init error: Allegro initialization fail\n");
         }
 
-        walls[0].SetCoordinates(0, 0, win_width, 0);                   //top wall
-        walls[1].SetCoordinates(win_width, 0, win_width, win_height);  //right wall
-        walls[2].SetCoordinates(0, 0, 0, win_height);                  //left wall
-        walls[3].SetCoordinates(0, win_height, win_width, win_height); //bottom wall
+        walls[0].SetVectors(0, 0, win_width, 0);          // top wall
+        walls[1].SetVectors(win_width, 0, 0, win_height); // right wall
+        walls[2].SetVectors(0, 0, 0, win_height);         // left wall
+        walls[3].SetVectors(0, win_height, win_width, 0); // bottom wall
 
-        printf("vec x1, y1: %f %f\n", walls[1].a.x, walls[1].a.y);
-        printf("vec x2, y2: %f %f\n", walls[1].b.x, walls[1].b.y);
+        walls[0].setAngle();
+        walls[1].setAngle();
+        walls[2].setAngle();
+        walls[3].setAngle();
+
         objects.first.push_back(&walls[0]);
         objects.first.push_back(&walls[1]);
         objects.first.push_back(&walls[2]);
         objects.first.push_back(&walls[3]);
     }
 
-    //starts main event loop
+    // starts main event loop
     void Window::Run(FpsCallback fpsCallback, DrawCallback drawCallback)
     {
         RunAllegro(fpsCallback, drawCallback);
@@ -75,36 +78,32 @@ namespace screen
 
     void Window::ManageCollisions() const
     {
-
-        for (auto object1 = objects.second.begin(); object1 != objects.second.end(); ++object1)
+        for (int i = 0; i < objects.second.size(); ++i)
         {
-            //check for collisions between objects
+            // check for collisions between objects
             if (objects.second.size() > 1)
             {
-                for (auto object2 = ++object1; object2 != objects.second.end(); ++object2)
+                for (int j = 0; j < objects.second.size(); ++j)
                 {
-                    std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*object2);
+                    auto res = objects.second[i]->getVectorIfCollide(objects.second[j]);
                     if (res.first)
                     {
-                        (*object1)->Reflect(res.second.getAngle());
-                        (*object1)->Move();
-                        (*object2)->Move();
+                        objects.second[i]->Reflect(res.second.second.getAngle());
+                        objects.second[j]->Reflect(res.second.first.getAngle());
+                        return;
                     }
                 }
             }
 
-            //check for collisions between object and a vector
-            for (auto vector = objects.first.begin(); vector != objects.first.end(); ++vector)
+            // check for collisions between object and a vector
+            for (int vec = 0; vec < objects.first.size(); ++vec)
             {
-                std::pair<bool, const shape::Vector> res = (*object1)->getVectorIfCollide(*vector);
-
-                printf("vec x1, y1: %f %f\n", walls[1].a.x, walls[1].a.y);
-                printf("vec x2, y2: %f %f\n", walls[1].b.x, walls[1].b.y);
+                std::pair<bool, const shape::Vector> res = objects.second[i]->getVectorIfCollide(objects.first[vec]);
 
                 if (res.first)
                 {
-                    (*object1)->Reflect(res.second.getAngle());
-                    (*object1)->Move();
+                    objects.second[i]->Reflect(res.second.getAngle());
+                    return;
                 }
             }
         }
@@ -113,13 +112,8 @@ namespace screen
     void Window::MoveAll()
     {
         for (auto obj = objects.second.begin(); obj != objects.second.end(); ++obj)
+        {
             (*obj)->Move();
-
-            printf("POINTER: %p\n", (*obj));
-            printf("MoveAll side[0]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[0].a.x, (*obj)->sides[0].a.y, (*obj)->sides[0].a.x + (*obj)->sides[0].b.x, (*obj)->sides[0].a.y + (*obj)->sides[0].b.y);
-            printf("MoveAll side[1]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[1].a.x, (*obj)->sides[1].a.y, (*obj)->sides[1].a.x + (*obj)->sides[1].b.x, (*obj)->sides[1].a.y + (*obj)->sides[1].b.y);
-            printf("MoveAll side[2]: %.0f %.0f %.0f %.0f\n", (*obj)->sides[2].a.x, (*obj)->sides[2].a.y, (*obj)->sides[2].a.x + (*obj)->sides[2].b.x, (*obj)->sides[2].a.y + (*obj)->sides[2].b.y);
-            printf("MoveAll side[3]: %.0f %.0f %.0f %.0f\n\n", (*obj)->sides[3].a.x, (*obj)->sides[3].a.y, (*obj)->sides[3].a.x + (*obj)->sides[3].b.x, (*obj)->sides[3].a.y + (*obj)->sides[3].b.y);
         }
     }
 
