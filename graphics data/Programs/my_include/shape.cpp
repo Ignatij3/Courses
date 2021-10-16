@@ -23,7 +23,6 @@ namespace shape
     void Shape::SetDirection(double alpha)
     {
         angle = (alpha < 0 || alpha > 360) ? 0 : alpha;
-        printf("new angle: %f\n", angle);
 
         direction.first  = cos(angle * PI / 180); // converting degrees to radians
         direction.second = sin(angle * PI / 180); // converting degrees to radians

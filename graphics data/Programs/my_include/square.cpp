@@ -99,10 +99,10 @@ namespace shape
 
     void Square::Draw() const
     {
-        double lx = this->LeftmostX();
-        double rx = this->RightmostX();
-        double uy = this->UppermostY();
-        double ly = this->LowermostY();
+        double lx = LeftmostX();
+        double rx = RightmostX();
+        double uy = UppermostY();
+        double ly = LowermostY();
         al_draw_filled_rectangle(lx, uy, rx, ly, color);
     }
 }

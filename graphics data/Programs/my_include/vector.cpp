@@ -22,10 +22,10 @@ namespace shape
 
     Vector::Vector(const Vector& rhs) noexcept
     {
-        this->a     = rhs.a;
-        this->b     = rhs.b;
-        this->angle = rhs.angle;
-        this->color = rhs.color;
+        a     = rhs.a;
+        b     = rhs.b;
+        angle = rhs.angle;
+        color = rhs.color;
     }
 
     void Vector::setAngle()
