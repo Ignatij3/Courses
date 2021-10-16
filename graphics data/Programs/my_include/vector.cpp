@@ -28,6 +28,11 @@ namespace shape
         color = rhs.color;
     }
 
+    double Vector::Slope()
+    {
+        return (a.XDiff(b) == 0) ? 0 : a.YDiff(b) / a.XDiff(b);
+    }
+
     void Vector::setAngle()
     {
         angle = atan2(a.YDiff(b), a.XDiff(b)) * (180 / PI);
@@ -83,6 +88,26 @@ namespace shape
         return sqrt(x_diff_squared + y_diff_squared);
     }
 
+    double Vector::HighestX() const
+    {
+        return (a.x > b.x) ? a.x : b.x;
+    }
+
+    double Vector::LowestX() const
+    {
+        return (a.x < b.x) ? a.x : b.x;
+    }
+
+    double Vector::HighestY() const
+    {
+        return (a.y > b.y) ? a.y : b.y;
+    }
+
+    double Vector::LowestY() const
+    {
+        return (a.y < b.y) ? a.y : b.y;
+    }
+
     int Vector::operator^(Vector& rhs) const
     {
         int x1 = b.XDiff(a);
@@ -91,6 +116,17 @@ namespace shape
         int y2 = rhs.b.YDiff(rhs.a);
 
         return x1 * y2 - x2 * y1;
+    }
+
+    Vector& Vector::operator=(const Vector& rhs)
+    {
+        a = rhs.a;
+        b = rhs.b;
+
+        angle = rhs.angle;
+        color = rhs.color;
+
+        return *this;
     }
 
     Vector& Vector::operator=(Vector&& rhs)

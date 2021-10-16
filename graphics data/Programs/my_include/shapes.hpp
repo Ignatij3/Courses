@@ -35,24 +35,30 @@ namespace shape
     class Vector {
       private:
         double angle;
-        Point<double> a;
-        Point<double> b;
 
       public:
         ALLEGRO_COLOR color;
+        Point<double> a;
+        Point<double> b;
 
         Vector();
         Vector(Point<double> point, Point<double> vector);
         Vector(double x1, double y1, double x2, double y2);
         Vector(const Vector& rhs) noexcept;
 
+        double Slope();
         void setAngle();
         void SetVectors(Point<double> point, Point<double> vector);
         void SetVectors(double x1, double y1, double x2, double y2);
         double getAngle() const;
         bool Cross(const Vector& lineb) const;
         double Magnitude();
+        double HighestX() const;
+        double LowestX() const;
+        double HighestY() const;
+        double LowestY() const;
         int operator^(Vector& rhs) const;
+        Vector& operator=(const Vector& rhs);
         Vector& operator=(Vector&& rhs);
     };
 
@@ -70,6 +76,8 @@ namespace shape
         virtual double LowermostY() const = 0;
         virtual void SetSides()           = 0;
         virtual void SetAngleSides()      = 0;
+        std::pair<bool, const Vector> LiesOnLine(const std::vector<Vector>& sides, const Point<double>& angle) const;
+        std::pair<const Vector, const Vector> FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const;
 
       public:
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
@@ -78,7 +86,6 @@ namespace shape
 
         virtual std::vector<Vector> GetSides() const = 0;
         virtual const int sideAmount() const         = 0;
-        virtual Shape* InitFromStdin() const         = 0;
         virtual void Move()                          = 0;
         virtual void Draw() const                    = 0;
         void Reflect(double otherVectorAngle);
@@ -86,8 +93,8 @@ namespace shape
         // setDirection sets shape's direction in degrees, where 0 points right and goes anticlockwise
         // if alpha is smaller than 0 or greater than 360, direction is set to 0
         void SetDirection(double alpha);
-        std::pair<bool, std::pair<const Vector, const Vector>> getVectorIfCollide(const Shape* other) const;
-        std::pair<bool, const Vector> getVectorIfCollide(const Vector* other_vector) const;
+        std::pair<bool, std::pair<const Vector, const Vector>> CollideWith(const Shape* other) const;
+        std::pair<bool, const Vector> CollideWith(const Vector* other_vector) const;
     };
 
     class Rectangle : public Shape {
@@ -111,7 +118,7 @@ namespace shape
 
         std::vector<Vector> GetSides() const override;
         const int sideAmount() const override;
-        Shape* InitFromStdin() const override;
+        Square static InitFromStdin();
         void Move() override;
         void Draw() const override;
     };

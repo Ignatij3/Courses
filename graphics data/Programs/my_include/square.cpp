@@ -68,7 +68,7 @@ namespace shape
         return 4;
     }
 
-    Shape* Square::InitFromStdin() const
+    Square static InitFromStdin()
     {
         double x, y;
         double side;
@@ -87,7 +87,7 @@ namespace shape
         scanf("%f\n", angle);
 
         Square sqr = Square(Point<double>(x, y), side, angle);
-        return &sqr;
+        return sqr;
     }
 
     void Square::Move()

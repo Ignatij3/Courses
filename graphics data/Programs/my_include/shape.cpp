@@ -28,7 +28,7 @@ namespace shape
         direction.second = sin(angle * PI / 180); // converting degrees to radians
     }
 
-    std::pair<bool, std::pair<const Vector, const Vector>> Shape::getVectorIfCollide(const Shape* other) const
+    std::pair<bool, std::pair<const Vector, const Vector>> Shape::CollideWith(const Shape* other) const
     {
         std::vector<Vector> sides       = GetSides();
         std::vector<Vector> other_sides = other->GetSides();
@@ -39,14 +39,80 @@ namespace shape
             for (int j = 0; j < other->sideAmount(); ++j)
             {
                 if (sides[i].Cross(other_sides[j]))
-                    return std::make_pair(true, std::make_pair(sides[i], other_sides[j])); // returns horisontal line
+                    // return std::make_pair(true, std::make_pair(sides[i], other_sides[j])); // returns horisontal line
+                    return std::make_pair(true, FindSidesToReflect(sides, other_sides, i, j));
             }
         }
 
         return std::make_pair(false, std::make_pair(sides[0], other_sides[0]));
     }
 
-    std::pair<bool, const Vector> Shape::getVectorIfCollide(const Vector* other_vector) const
+    std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point<double>& angle) const
+    {
+        std::size_t sideAmt = sides.size();
+        for (int i = 0; i < sideAmt; ++i) // find vector which is touched by angle
+        {
+            Vector otherVec = sides[i];
+            Vector temp(otherVec.a, angle);
+
+            if (otherVec.Slope() == temp.Slope()) // lies on the same line as the vector does
+            {
+                double lowY  = otherVec.LowestY();
+                double highY = otherVec.HighestY();
+                double lowX  = otherVec.LowestX();
+                double highX = otherVec.HighestX();
+
+                if ((highX >= temp.b.x && temp.b.x >= lowX) && (highY >= temp.b.y && temp.b.y >= lowY)) // point is in between vector's endpoints, aka lies on it
+                    return std::make_pair(true, otherVec);
+            }
+        }
+
+        return std::make_pair(false, Vector());
+    }
+
+    std::pair<const Vector, const Vector> Shape::FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const
+    {
+        std::pair<Vector, Vector> resulting_vectors; // first vector - side of first shape, second - of second shape
+
+        // if both
+        if (std::pair<bool, const Vector> res = LiesOnLine(otherShapeSides, shapeSides[sideIndex].a); res.first) // check whether and which side does first angle of first collided vector touch
+        {
+            resulting_vectors.second = res.second;
+            printf("1.1\n");
+        }
+        else if (std::pair<bool, const Vector> res = LiesOnLine(otherShapeSides, shapeSides[sideIndex].b); res.first) // second angle of first vector
+        {
+            resulting_vectors.second = res.second;
+            printf("1.2\n");
+        }
+        else // side touched purely angle (or mistake in code)
+        {
+            resulting_vectors.second = shapeSides[sideIndex];
+            printf("1.0\n");
+        }
+
+        // if both
+        if (std::pair<bool, const Vector> res = LiesOnLine(shapeSides, otherShapeSides[otherSideIndex].a); res.first) // first angle of second vector
+        {
+            resulting_vectors.first = res.second;
+            printf("2.1\n");
+        }
+        else if (std::pair<bool, const Vector> res = LiesOnLine(shapeSides, otherShapeSides[otherSideIndex].b); res.first) // second angle of second vector
+        {
+            resulting_vectors.first = res.second;
+            printf("2.2\n");
+        }
+        else
+        {
+            resulting_vectors.first = otherShapeSides[otherSideIndex];
+            printf("2.0\n");
+        }
+
+        printf("vector angles: %.2f, %.2f\n", resulting_vectors.first.getAngle(), resulting_vectors.second.getAngle());
+        return resulting_vectors;
+    }
+
+    std::pair<bool, const Vector> Shape::CollideWith(const Vector* other_vector) const
     {
 
         std::vector<Vector> derived_sides = GetSides();
@@ -57,6 +123,6 @@ namespace shape
                 return std::make_pair(true, *other_vector);
         }
 
-        return std::make_pair(false, derived_sides[0]);
+        return std::make_pair(false, Vector());
     }
 }

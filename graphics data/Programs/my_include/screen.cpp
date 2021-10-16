@@ -85,7 +85,7 @@ namespace screen
             {
                 for (int j = 0; j < objects.second.size(); ++j)
                 {
-                    auto res = objects.second[i]->getVectorIfCollide(objects.second[j]);
+                    auto res = objects.second[i]->CollideWith(objects.second[j]);
                     if (res.first)
                     {
                         objects.second[i]->Reflect(res.second.second.getAngle());
@@ -98,7 +98,7 @@ namespace screen
             // check for collisions between object and a vector
             for (int vec = 0; vec < objects.first.size(); ++vec)
             {
-                std::pair<bool, const shape::Vector> res = objects.second[i]->getVectorIfCollide(objects.first[vec]);
+                std::pair<bool, const shape::Vector> res = objects.second[i]->CollideWith(objects.first[vec]);
 
                 if (res.first)
                 {
