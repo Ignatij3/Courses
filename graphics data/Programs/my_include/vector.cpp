@@ -1,7 +1,6 @@
 #include "shapes.hpp"
 
 #include <cmath>
-#include <iostream>
 
 namespace shape
 {

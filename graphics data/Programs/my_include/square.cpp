@@ -6,22 +6,22 @@ namespace shape
 {
     double Square::LeftmostX() const
     {
-        return this->centre.x - edge;
+        return centre.x - edge;
     }
 
     double Square::RightmostX() const
     {
-        return this->centre.x + edge;
+        return centre.x + edge;
     }
 
     double Square::UppermostY() const
     {
-        return this->centre.y - edge;
+        return centre.y - edge;
     }
 
     double Square::LowermostY() const
     {
-        return this->centre.y + edge;
+        return centre.y + edge;
     }
 
     void Square::SetSides()
@@ -92,8 +92,8 @@ namespace shape
 
     void Square::Move()
     {
-        this->centre.x += direction.first;
-        this->centre.y -= direction.second;
+        centre.x += direction.first;
+        centre.y -= direction.second;
         SetSides();
     }
 

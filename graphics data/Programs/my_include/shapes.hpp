@@ -72,6 +72,7 @@ namespace shape
         virtual void SetAngleSides()      = 0;
 
       public:
+        Point<double> centre;
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
 
         Shape(Point<double> centreCoords, double alpha);
