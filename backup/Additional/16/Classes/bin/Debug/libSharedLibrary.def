@@ -1,9 +1,0 @@
-EXPORTS
-    SampleAddInt @1
-    SampleFunction1 @2
-    SampleFunction2 @3
-    _Z14CreateSomeDatav @4
-    _ZN8SomeData5PrintEv @5
-    _ZN8SomeDataC1Ei @6
-    _ZN8SomeDataC2Ei @7
-    _get_output_format @8
