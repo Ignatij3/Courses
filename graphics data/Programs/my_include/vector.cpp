@@ -1,6 +1,7 @@
 #include "shapes.hpp"
 
 #include <cmath>
+#include <iostream>
 
 namespace shape
 {
@@ -28,9 +29,9 @@ namespace shape
         color = rhs.color;
     }
 
-    double Vector::Slope()
+    double Vector::Slope() const
     {
-        return (a.XDiff(b) == 0) ? 0 : a.YDiff(b) / a.XDiff(b);
+        return (std::abs(a.XDiff(b)) < 0.4) ? 0 : a.YDiff(b) / a.XDiff(b);
     }
 
     void Vector::setAngle()
@@ -62,22 +63,28 @@ namespace shape
 
     bool Vector::Cross(const Vector& lineb) const
     {
-        auto sign = [](int x) -> char { return (x >= 0 ? '+' : '-'); };
+        auto sign = [](int x) -> char { return ((x > 0) ? '+' : ((x < 0) ? '-' : '0')); };
+        int cross1, cross2, cross3, cross4;
 
         Vector ac(a, lineb.a);
         Vector ad(a, lineb.b);
-        int cross1 = *this ^ ac;
-        int cross2 = *this ^ ad;
+        cross1 = *this ^ ac;
+        cross2 = *this ^ ad;
 
-        if (sign(cross1) == sign(cross2) || cross1 == 0 || cross2 == 0)
+        // printf("1) prod: %d %d\n", cross1, cross2);
+        if (sign(cross1) == sign(cross2))
             return false;
 
         Vector ca(lineb.a, a);
-        Vector da(lineb.a, b);
-        cross1 = lineb ^ ca;
-        cross2 = lineb ^ da;
+        Vector cb(lineb.a, b);
+        cross3 = lineb ^ ca;
+        cross4 = lineb ^ cb;
 
-        return !(sign(cross1) == sign(cross2) || cross1 == 0 || cross2 == 0);
+        // printf("2) prod: %d %d\n\n", cross3, cross4);
+        if (cross1 == 0 && cross2 == 0 && cross3 == 0 && cross4 == 0)
+            return true;
+
+        return !((sign(cross3) == sign(cross4)) || cross1 == 0 || cross2 == 0);
     }
 
     double Vector::Magnitude()
@@ -108,6 +115,7 @@ namespace shape
         return (a.y < b.y) ? a.y : b.y;
     }
 
+    // calculates determinant
     int Vector::operator^(Vector& rhs) const
     {
         int x1 = b.XDiff(a);
@@ -137,5 +145,10 @@ namespace shape
         color = rhs.color;
 
         return *this;
+    }
+
+    bool Vector::operator==(const Vector& rhs) const
+    {
+        return (a == rhs.a && b == rhs.b);
     }
 }

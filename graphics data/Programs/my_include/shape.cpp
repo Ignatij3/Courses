@@ -49,11 +49,16 @@ namespace shape
 
     std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point<double>& angle) const
     {
+
         std::size_t sideAmt = sides.size();
         for (int i = 0; i < sideAmt; ++i) // find vector which is touched by angle
         {
             Vector otherVec = sides[i];
+            printf("sides[i]: (%f %f) (%f %f) %f\n", sides[i].a.x, sides[i].a.y, sides[i].b.x, sides[i].b.y, sides[i].Slope());
             Vector temp(otherVec.a, angle);
+            printf("temp:     (%f %f) (%f %f) %f\n", temp.a.x, temp.a.y, temp.b.x, temp.b.y, temp.Slope());
+            if (sides[i].a == angle) // angle touches angle of line
+                return std::make_pair(true, otherVec);
 
             if (otherVec.Slope() == temp.Slope()) // lies on the same line as the vector does
             {
@@ -62,11 +67,14 @@ namespace shape
                 double lowX  = otherVec.LowestX();
                 double highX = otherVec.HighestX();
 
+                printf("(%f >= %f && %f >= %f) && (%f >= %f && %f >= %f)\n", highX, temp.b.x, temp.b.x, lowX, highY, temp.b.y, temp.b.y, lowY);
+                // make almost equal
                 if ((highX >= temp.b.x && temp.b.x >= lowX) && (highY >= temp.b.y && temp.b.y >= lowY)) // point is in between vector's endpoints, aka lies on it
                     return std::make_pair(true, otherVec);
             }
         }
 
+        printf("END\n\n");
         return std::make_pair(false, Vector());
     }
 
@@ -75,6 +83,8 @@ namespace shape
         std::pair<Vector, Vector> resulting_vectors; // first vector - side of first shape, second - of second shape
 
         // if both
+        printf("FIRST SHAPE SIDE INDEX: %d\n", sideIndex);
+        printf("SECOND SHAPE SIDE INDEX: %d\n", otherSideIndex);
         if (std::pair<bool, const Vector> res = LiesOnLine(otherShapeSides, shapeSides[sideIndex].a); res.first) // check whether and which side does first angle of first collided vector touch
         {
             resulting_vectors.second = res.second;
@@ -108,7 +118,6 @@ namespace shape
             printf("2.0\n");
         }
 
-        printf("vector angles: %.2f, %.2f\n", resulting_vectors.first.getAngle(), resulting_vectors.second.getAngle());
         return resulting_vectors;
     }
 

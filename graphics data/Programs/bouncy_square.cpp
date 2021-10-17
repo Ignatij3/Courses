@@ -7,7 +7,7 @@
 const ALLEGRO_COLOR RED   = al_map_rgb(255, 0, 0);
 const ALLEGRO_COLOR WHITE = al_map_rgb(255, 255, 255);
 
-screen::Window window(180, 1200, 720);
+screen::Window window(210, 1200, 720);
 
 void NextFrame()
 {

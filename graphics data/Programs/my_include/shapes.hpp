@@ -29,6 +29,11 @@ namespace shape
         {
             return this->y - rhs.y;
         }
+
+        bool operator==(const Point& rhs) const
+        {
+            return (x == rhs.x && y == rhs.y);
+        }
     };
 
     // vector defined with starting point and vector going from that point
@@ -46,7 +51,7 @@ namespace shape
         Vector(double x1, double y1, double x2, double y2);
         Vector(const Vector& rhs) noexcept;
 
-        double Slope();
+        double Slope() const;
         void setAngle();
         void SetVectors(Point<double> point, Point<double> vector);
         void SetVectors(double x1, double y1, double x2, double y2);
@@ -60,10 +65,11 @@ namespace shape
         int operator^(Vector& rhs) const;
         Vector& operator=(const Vector& rhs);
         Vector& operator=(Vector&& rhs);
+        bool operator==(const Vector& rhs) const;
     };
 
     // in circle, check for collision with vector pointing in move direction
-    class Shape {
+    class Shape { //брать в расчёт массу и потерю скорости //stationary option
       protected:
         double angle;
         std::vector<Vector> sides;
