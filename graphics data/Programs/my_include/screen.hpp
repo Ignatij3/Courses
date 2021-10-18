@@ -10,6 +10,9 @@ namespace screen
 {
     inline shape::Vector walls[4]; // make rectangle
 
+    std::pair<double, double> ConvertToNormalCoords(double x, double y);
+    shape::Point ConvertToNormalCoords(shape::Point a);
+
     class Window {
       private:
         struct BadInit : public std::exception {
@@ -21,7 +24,7 @@ namespace screen
             std::string message;
         };
 
-        std::pair<std::vector<shape::Vector*>, std::vector<shape::Shape*>> objects;
+        std::pair<std::vector<shape::Vector>, std::vector<shape::Shape*>> objects;
 
       public:
         static int fps;
@@ -31,10 +34,10 @@ namespace screen
         Window(int fps_, int win_width, int win_height);
 
         void Run(FpsCallback fpsCallback, DrawCallback drawCallback);
-        void AddObject(shape::Vector*);
-        void AddObject(shape::Shape* figure);
-        void SetColor(shape::Shape* figure, ALLEGRO_COLOR col);
-        void AddObject(shape::Shape* figure, ALLEGRO_COLOR col);
+        void AddObject(shape::Vector);
+        void AddObject(shape::Shape& figure);
+        void SetColor(shape::Shape& figure, ALLEGRO_COLOR col);
+        void AddObject(shape::Shape& figure, ALLEGRO_COLOR col);
         void ManageCollisions() const;
         void MoveAll();
         void DrawAll() const;

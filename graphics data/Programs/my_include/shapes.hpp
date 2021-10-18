@@ -5,34 +5,35 @@
 
 #include <vector>
 
+bool AlmostEqual(double a, double b, double epsilon);
+
 namespace shape
 {
     const double PI = 3.14159265;
 
-    template <class T>
     class Point {
       public:
-        T x, y;
+        double x, y;
 
         Point() :
             x(0), y(0) { }
 
-        Point(T x, T y) :
+        Point(double x, double y) :
             x(x), y(y) { }
 
-        T XDiff(const Point& rhs) const
+        double XDiff(const Point& rhs) const
         {
             return this->x - rhs.x;
         }
 
-        T YDiff(const Point& rhs) const
+        double YDiff(const Point& rhs) const
         {
             return this->y - rhs.y;
         }
 
         bool operator==(const Point& rhs) const
         {
-            return (x == rhs.x && y == rhs.y);
+            return (AlmostEqual(x, rhs.x, 0.4) && AlmostEqual(y, rhs.y, 0.4));
         }
     };
 
@@ -43,17 +44,18 @@ namespace shape
 
       public:
         ALLEGRO_COLOR color;
-        Point<double> a;
-        Point<double> b;
+        Point a;
+        Point b;
 
         Vector();
-        Vector(Point<double> point, Point<double> vector);
+        Vector(Point point, Point vector);
         Vector(double x1, double y1, double x2, double y2);
         Vector(const Vector& rhs) noexcept;
 
         double Slope() const;
+        bool LiesBetween(const Vector& outsideVector) const;
         void setAngle();
-        void SetVectors(Point<double> point, Point<double> vector);
+        void SetVectors(Point point, Point vector);
         void SetVectors(double x1, double y1, double x2, double y2);
         double getAngle() const;
         bool Cross(const Vector& lineb) const;
@@ -73,7 +75,7 @@ namespace shape
       protected:
         double angle;
         std::vector<Vector> sides;
-        Point<double> centre;
+        Point centre;
         std::pair<double, double> direction;
 
         virtual double LeftmostX() const  = 0;
@@ -82,13 +84,13 @@ namespace shape
         virtual double LowermostY() const = 0;
         virtual void SetSides()           = 0;
         virtual void SetAngleSides()      = 0;
-        std::pair<bool, const Vector> LiesOnLine(const std::vector<Vector>& sides, const Point<double>& angle) const;
+        std::pair<bool, const Vector> LiesOnLine(const std::vector<Vector>& sides, const Point& angle) const;
         std::pair<const Vector, const Vector> FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const;
 
       public:
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
 
-        Shape(Point<double> centreCoords, double alpha);
+        Shape(Point centreCoords, double width, double height, double alpha);
 
         virtual std::vector<Vector> GetSides() const = 0;
         virtual const int sideAmount() const         = 0;
@@ -119,7 +121,7 @@ namespace shape
         void SetAngleSides() override;
 
       public:
-        Square(Point<double> centreCoords, double side, double alpha);
+        Square(Point centreCoords, double side, double alpha);
         Square(double centreX, double centreY, double side, double alpha);
 
         std::vector<Vector> GetSides() const override;

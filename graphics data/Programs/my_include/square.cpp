@@ -50,8 +50,8 @@ namespace shape
         sides[3].setAngle();
     }
 
-    Square::Square(Point<double> centreCoords, double side, double alpha) :
-        Shape(centreCoords, alpha),
+    Square::Square(Point centreCoords, double side, double alpha) :
+        Shape(centreCoords, side, side, alpha),
         edge((side < 0) ? 0 : side / 2),
         sides(4, Vector())
     {
@@ -61,7 +61,7 @@ namespace shape
     }
 
     Square::Square(double centreX, double centreY, double side, double alpha) :
-        Square(Point<double>(centreX, centreY), side, alpha) { }
+        Square(Point(centreX, centreY), side, alpha) { }
 
     const int Square::sideAmount() const
     {
@@ -86,7 +86,7 @@ namespace shape
         printf("Enter square's movement angle: ");
         scanf("%f\n", angle);
 
-        Square sqr = Square(Point<double>(x, y), side, angle);
+        Square sqr = Square(Point(x, y), side, angle);
         return sqr;
     }
 

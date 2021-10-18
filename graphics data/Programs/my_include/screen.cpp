@@ -6,6 +6,17 @@
 
 namespace screen
 {
+    std::pair<double, double> ConvertToNormalCoords(double x, double y)
+    {
+        return std::make_pair(x, Window::window_height - y);
+    }
+
+    shape::Point ConvertToNormalCoords(shape::Point a)
+    {
+        std::pair<double, double> pt = ConvertToNormalCoords(a.x, a.y);
+        return shape::Point(pt.first, pt.second);
+    }
+
     Window::BadInit::BadInit(const std::string& msg) :
         message(msg) { }
 
@@ -42,10 +53,10 @@ namespace screen
         walls[2].setAngle();
         walls[3].setAngle();
 
-        objects.first.push_back(&walls[0]);
-        objects.first.push_back(&walls[1]);
-        objects.first.push_back(&walls[2]);
-        objects.first.push_back(&walls[3]);
+        objects.first.push_back(walls[0]);
+        objects.first.push_back(walls[1]);
+        objects.first.push_back(walls[2]);
+        objects.first.push_back(walls[3]);
     }
 
     // starts main event loop
@@ -55,22 +66,22 @@ namespace screen
         ExitAllegro();
     }
 
-    void Window::AddObject(shape::Vector* vec)
+    void Window::AddObject(shape::Vector vec)
     {
         objects.first.insert(objects.first.end(), vec);
     }
 
-    void Window::AddObject(shape::Shape* figure)
+    void Window::AddObject(shape::Shape& figure)
     {
-        objects.second.insert(objects.second.end(), figure);
+        objects.second.insert(objects.second.end(), &figure);
     }
 
-    void Window::SetColor(shape::Shape* figure, ALLEGRO_COLOR col)
+    void Window::SetColor(shape::Shape& figure, ALLEGRO_COLOR col)
     {
-        figure->color = col;
+        figure.color = col;
     }
 
-    void Window::AddObject(shape::Shape* figure, ALLEGRO_COLOR col)
+    void Window::AddObject(shape::Shape& figure, ALLEGRO_COLOR col)
     {
         SetColor(figure, col);
         AddObject(figure);
@@ -98,7 +109,7 @@ namespace screen
             // check for collisions between object and a vector
             for (int vec = 0; vec < objects.first.size(); ++vec)
             {
-                std::pair<bool, const shape::Vector> res = objects.second[i]->CollideWith(objects.first[vec]);
+                std::pair<bool, const shape::Vector> res = objects.second[i]->CollideWith(&objects.first[vec]);
 
                 if (res.first)
                 {

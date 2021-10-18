@@ -8,7 +8,7 @@ namespace shape
 
     Vector::Vector() { }
 
-    Vector::Vector(Point<double> point, Point<double> vector) :
+    Vector::Vector(Point point, Point vector) :
         a(point),
         b(vector)
     {
@@ -16,7 +16,7 @@ namespace shape
     }
 
     Vector::Vector(double x1, double y1, double x2, double y2) :
-        Vector(Point<double>(x1, y1), Point<double>(x2, y2))
+        Vector(Point(x1, y1), Point(x2, y2))
     {
         setAngle();
     }
@@ -31,7 +31,20 @@ namespace shape
 
     double Vector::Slope() const
     {
-        return (std::abs(a.XDiff(b)) < 0.4) ? 0 : a.YDiff(b) / a.XDiff(b);
+        return (AlmostEqual(a.XDiff(b), 0, 1)) ? 0 : a.YDiff(b) / a.XDiff(b);
+    }
+
+    bool Vector::LiesBetween(const Vector& outsideVector) const
+    {
+        double lowY  = outsideVector.LowestY();
+        double highY = outsideVector.HighestY();
+        double lowX  = outsideVector.LowestX();
+        double highX = outsideVector.HighestX();
+
+        // printf("(%f >= %f && %f >= %f) && (%f >= %f && %f >= %f)\n", highX, this->b.x, this->b.x, lowX, highY, this->b.y, this->b.y, lowY);
+        bool secondX = (highX > this->b.x || AlmostEqual(highX, this->b.x, 1)) && (this->b.x > lowX || AlmostEqual(this->b.x, lowX, 1));
+        bool secondY = (highY > this->b.y || AlmostEqual(highY, this->b.y, 1)) && (this->b.y > lowY || AlmostEqual(this->b.y, lowY, 1));
+        return secondX && secondY; // firstX && firstY
     }
 
     void Vector::setAngle()
@@ -40,7 +53,7 @@ namespace shape
         angle = (angle < 0) ? 360 + angle : angle;
     }
 
-    void Vector::SetVectors(Point<double> point, Point<double> vector)
+    void Vector::SetVectors(Point point, Point vector)
     {
         a.x = point.x;
         a.y = point.y;
@@ -71,7 +84,6 @@ namespace shape
         cross1 = *this ^ ac;
         cross2 = *this ^ ad;
 
-        // printf("1) prod: %d %d\n", cross1, cross2);
         if (sign(cross1) == sign(cross2))
             return false;
 
@@ -80,8 +92,7 @@ namespace shape
         cross3 = lineb ^ ca;
         cross4 = lineb ^ cb;
 
-        // printf("2) prod: %d %d\n\n", cross3, cross4);
-        if (cross1 == 0 && cross2 == 0 && cross3 == 0 && cross4 == 0)
+        if (cross1 == 0 && cross2 == 0 && cross3 == 0 && cross4 == 0) // same line
             return true;
 
         return !((sign(cross3) == sign(cross4)) || cross1 == 0 || cross2 == 0);

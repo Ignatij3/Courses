@@ -1,15 +1,31 @@
+#include "screen.hpp"
 #include "shapes.hpp"
 
 #include <cmath>
 #include <iostream>
 
+// move in other header
+bool AlmostEqual(double a, double b, double epsilon)
+{
+    return std::abs(b - a) <= epsilon;
+}
+
 namespace shape
 {
-    Shape::Shape(Point<double> centreCoords, double alpha) :
+    Shape::Shape(Point centreCoords, double width, double height, double alpha) :
         centre(centreCoords),
         angle((alpha < 0) ? 0
                           : ((alpha > 360) ? 360 : alpha)),
-        sides(1, Vector()) { }
+        sides(1, Vector())
+    {
+        // if window initialised
+        centre.x = (centre.x < width) ? width
+                                      : ((centre.x > (screen::Window::window_width - width)) ? (screen::Window::window_width - width) : centre.x);
+        centre.y = (centre.y < height) ? height
+                                       : ((centre.y > (screen::Window::window_height - height)) ? (screen::Window::window_height - height) : centre.y);
+
+        centre = screen::ConvertToNormalCoords(centre);
+    }
 
     void Shape::Reflect(double otherVectorAngle)
     {
@@ -39,42 +55,29 @@ namespace shape
             for (int j = 0; j < other->sideAmount(); ++j)
             {
                 if (sides[i].Cross(other_sides[j]))
-                    // return std::make_pair(true, std::make_pair(sides[i], other_sides[j])); // returns horisontal line
                     return std::make_pair(true, FindSidesToReflect(sides, other_sides, i, j));
             }
         }
 
-        return std::make_pair(false, std::make_pair(sides[0], other_sides[0]));
+        return std::make_pair(false, std::make_pair(Vector(), Vector()));
     }
 
-    std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point<double>& angle) const
+    std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point& angle) const
     {
 
         std::size_t sideAmt = sides.size();
         for (int i = 0; i < sideAmt; ++i) // find vector which is touched by angle
         {
             Vector otherVec = sides[i];
-            printf("sides[i]: (%f %f) (%f %f) %f\n", sides[i].a.x, sides[i].a.y, sides[i].b.x, sides[i].b.y, sides[i].Slope());
             Vector temp(otherVec.a, angle);
-            printf("temp:     (%f %f) (%f %f) %f\n", temp.a.x, temp.a.y, temp.b.x, temp.b.y, temp.Slope());
-            if (sides[i].a == angle) // angle touches angle of line
+
+            if (sides[i].a == angle)                   // angle touches angle of line
+                return std::make_pair(true, otherVec); // vector, perpendicular to incoming angle
+
+            if (AlmostEqual(otherVec.Slope(), temp.Slope(), 1) && temp.LiesBetween(otherVec)) // lies on the same line as the vector does and is between endpoints
                 return std::make_pair(true, otherVec);
-
-            if (otherVec.Slope() == temp.Slope()) // lies on the same line as the vector does
-            {
-                double lowY  = otherVec.LowestY();
-                double highY = otherVec.HighestY();
-                double lowX  = otherVec.LowestX();
-                double highX = otherVec.HighestX();
-
-                printf("(%f >= %f && %f >= %f) && (%f >= %f && %f >= %f)\n", highX, temp.b.x, temp.b.x, lowX, highY, temp.b.y, temp.b.y, lowY);
-                // make almost equal
-                if ((highX >= temp.b.x && temp.b.x >= lowX) && (highY >= temp.b.y && temp.b.y >= lowY)) // point is in between vector's endpoints, aka lies on it
-                    return std::make_pair(true, otherVec);
-            }
         }
 
-        printf("END\n\n");
         return std::make_pair(false, Vector());
     }
 
@@ -82,41 +85,19 @@ namespace shape
     {
         std::pair<Vector, Vector> resulting_vectors; // first vector - side of first shape, second - of second shape
 
-        // if both
-        printf("FIRST SHAPE SIDE INDEX: %d\n", sideIndex);
-        printf("SECOND SHAPE SIDE INDEX: %d\n", otherSideIndex);
         if (std::pair<bool, const Vector> res = LiesOnLine(otherShapeSides, shapeSides[sideIndex].a); res.first) // check whether and which side does first angle of first collided vector touch
-        {
             resulting_vectors.second = res.second;
-            printf("1.1\n");
-        }
         else if (std::pair<bool, const Vector> res = LiesOnLine(otherShapeSides, shapeSides[sideIndex].b); res.first) // second angle of first vector
-        {
             resulting_vectors.second = res.second;
-            printf("1.2\n");
-        }
-        else // side touched purely angle (or mistake in code)
-        {
+        else // side touched purely angle
             resulting_vectors.second = shapeSides[sideIndex];
-            printf("1.0\n");
-        }
 
-        // if both
         if (std::pair<bool, const Vector> res = LiesOnLine(shapeSides, otherShapeSides[otherSideIndex].a); res.first) // first angle of second vector
-        {
             resulting_vectors.first = res.second;
-            printf("2.1\n");
-        }
         else if (std::pair<bool, const Vector> res = LiesOnLine(shapeSides, otherShapeSides[otherSideIndex].b); res.first) // second angle of second vector
-        {
             resulting_vectors.first = res.second;
-            printf("2.2\n");
-        }
         else
-        {
             resulting_vectors.first = otherShapeSides[otherSideIndex];
-            printf("2.0\n");
-        }
 
         return resulting_vectors;
     }
