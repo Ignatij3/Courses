@@ -2,8 +2,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 int alFps;
 ALLEGRO_DISPLAY* alDisplay        = 0;
 ALLEGRO_EVENT_QUEUE* alEventQueue = 0;
@@ -17,34 +15,34 @@ bool InitAllegro(int screenWidth, int screenHeight, int fps)
     alFps = fps;
     if (!al_init())
     {
-        cout << "failed to initialize allegro!" << endl;
+        std::cout << "failed to initialize allegro!" << std::endl;
         return false;
     }
 
     alTimer = al_create_timer(1.0 / alFps);
     if (!alTimer)
     {
-        cout << "failed to create timer!" << endl;
+        std::cout << "failed to create timer!" << std::endl;
         return false;
     }
 
     alDisplay = al_create_display(screenWidth, screenHeight);
     if (!alDisplay)
     {
-        cout << "failed to create display!" << endl;
+        std::cout << "failed to create display!" << std::endl;
         return false;
     }
 
     if (!al_init_primitives_addon())
     {
-        cout << "failed to init addons!" << endl;
+        std::cout << "failed to init addons!" << std::endl;
         return false;
     }
 
     alEventQueue = al_create_event_queue();
     if (!alEventQueue)
     {
-        cout << "failed to create event queue!" << endl;
+        std::cout << "failed to create event queue!" << std::endl;
         return false;
     }
 

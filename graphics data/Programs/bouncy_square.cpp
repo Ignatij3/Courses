@@ -1,4 +1,3 @@
-#include "AllegroUtil.hpp"
 #include "screen.hpp"
 #include "shapes.hpp"
 
@@ -39,11 +38,17 @@ int main()
 {
     shape::Square sqr1(100, 220, 40, 135);
     shape::Square sqr2(200, 520, 75, 330);
+    shape::Square sqr3(1200, 520, 40, 30); // 1200, 520, 35, 30
+    shape::Square sqr4(600, 400, 50, 180);
+    shape::Square sqr5(100, 20, 5, 350);
     // shape::Square sqr1(700, 170, 40, 30); // failing setup
     // shape::Square sqr2(800, 120, 75, 60);
 
-    window.AddObject(sqr1, RED);
-    window.AddObject(sqr2, BEIGE);
+    window.AddObject(sqr1, DARKRED); // change init
+    window.AddObject(sqr2, ORANGE);
+    window.AddObject(sqr3, GREEN);
+    window.AddObject(sqr4, BLUE);
+    window.AddObject(sqr5, DARKGREEN);
     window.Run(&NextFrame, &Draw);
 
     return 0;

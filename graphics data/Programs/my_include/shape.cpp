@@ -12,7 +12,7 @@ bool AlmostEqual(double a, double b, double epsilon)
 
 namespace shape
 {
-    Shape::Shape(Point centreCoords, double width, double height, double alpha) :
+    Shape::Shape(Point centreCoords, double width, double height, double alpha) noexcept :
         centre(centreCoords),
         angle((alpha < 0) ? 0
                           : ((alpha > 360) ? 360 : alpha)),
@@ -27,7 +27,7 @@ namespace shape
         centre = screen::ConvertToNormalCoords(centre);
     }
 
-    void Shape::Reflect(double otherVectorAngle)
+    void Shape::Reflect(double otherVectorAngle) noexcept
     {
         double newAngle = -360 + (2 * otherVectorAngle) - angle;
         newAngle        = (newAngle < 0) ? 360 + newAngle : newAngle;
@@ -36,7 +36,7 @@ namespace shape
 
     // setDirection sets shape's direction in degrees, where 0 points right and goes anticlockwise
     // if alpha is smaller than 0 or greater than 360, direction is set to 0
-    void Shape::SetDirection(double alpha)
+    void Shape::SetDirection(double alpha) noexcept
     {
         angle = (alpha < 0 || alpha > 360) ? 0 : alpha;
 
@@ -44,7 +44,7 @@ namespace shape
         direction.second = sin(angle * PI / 180); // converting degrees to radians
     }
 
-    std::pair<bool, std::pair<const Vector, const Vector>> Shape::CollideWith(const Shape* other) const
+    std::pair<bool, std::pair<const Vector, const Vector>> Shape::CollideWith(const Shape* other) const noexcept
     {
         std::vector<Vector> sides       = GetSides();
         std::vector<Vector> other_sides = other->GetSides();
@@ -62,7 +62,7 @@ namespace shape
         return std::make_pair(false, std::make_pair(Vector(), Vector()));
     }
 
-    std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point& angle) const
+    std::pair<bool, const Vector> Shape::LiesOnLine(const std::vector<Vector>& sides, const Point& angle) const noexcept
     {
 
         std::size_t sideAmt = sides.size();
@@ -81,7 +81,7 @@ namespace shape
         return std::make_pair(false, Vector());
     }
 
-    std::pair<const Vector, const Vector> Shape::FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const
+    std::pair<const Vector, const Vector> Shape::FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const noexcept
     {
         std::pair<Vector, Vector> resulting_vectors; // first vector - side of first shape, second - of second shape
 
@@ -102,7 +102,7 @@ namespace shape
         return resulting_vectors;
     }
 
-    std::pair<bool, const Vector> Shape::CollideWith(const Vector* other_vector) const
+    std::pair<bool, const Vector> Shape::CollideWith(const Vector* other_vector) const noexcept
     {
 
         std::vector<Vector> derived_sides = GetSides();
