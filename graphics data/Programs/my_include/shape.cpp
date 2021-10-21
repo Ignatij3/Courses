@@ -12,20 +12,25 @@ bool AlmostEqual(double a, double b, double epsilon)
 
 namespace shape
 {
-    Shape::Shape(Point centreCoords, double width, double height, double alpha) noexcept :
+    Shape::Shape(Movement move, Point centreCoords, double width, double height, double alpha) noexcept :
         centre(centreCoords),
         angle((alpha < 0) ? 0
                           : ((alpha > 360) ? 360 : alpha)),
         sides(1, Vector())
     {
-        // if window initialised
-        centre.x = (centre.x < width) ? width
-                                      : ((centre.x > (screen::Window::window_width - width)) ? (screen::Window::window_width - width) : centre.x);
-        centre.y = (centre.y < height) ? height
-                                       : ((centre.y > (screen::Window::window_height - height)) ? (screen::Window::window_height - height) : centre.y);
+        double half_width  = width / 2;
+        double half_height = height / 2;
+
+        centre.x = (centre.x < half_width) ? half_width
+                                           : ((centre.x > (screen::Window::window_width - half_width)) ? (screen::Window::window_width - half_width) : centre.x);
+        centre.y = (centre.y < half_height) ? half_height
+                                            : ((centre.y > (screen::Window::window_height - half_height)) ? (screen::Window::window_height - half_height) : centre.y);
 
         centre = screen::ConvertToNormalCoords(centre);
+        MovementToggle(move);
     }
+
+    Shape::Shape() noexcept { }
 
     void Shape::Reflect(double otherVectorAngle) noexcept
     {
@@ -49,8 +54,7 @@ namespace shape
         std::vector<Vector> sides       = GetSides();
         std::vector<Vector> other_sides = other->GetSides();
 
-        for (int i = 0; i < sideAmount(); ++i) //проверять с какой стороной реально столкнулись (проверять разницу между координатами x и y
-                                               //если 2 стороны на одинаковом расстоянии, значит взять перпендикуляр биссектрисы угла)
+        for (int i = 0; i < sideAmount(); ++i)
         {
             for (int j = 0; j < other->sideAmount(); ++j)
             {
@@ -102,17 +106,13 @@ namespace shape
         return resulting_vectors;
     }
 
-    std::pair<bool, const Vector> Shape::CollideWith(const Vector* other_vector) const noexcept
+    void Shape::MovementToggle() noexcept
     {
+        dynamic = dynamic ? false : true;
+    }
 
-        std::vector<Vector> derived_sides = GetSides();
-
-        for (int i = 0; i < sideAmount(); ++i)
-        {
-            if (derived_sides[i].Cross(*other_vector))
-                return std::make_pair(true, *other_vector);
-        }
-
-        return std::make_pair(false, Vector());
+    void Shape::MovementToggle(Movement move) noexcept
+    {
+        dynamic = move;
     }
 }

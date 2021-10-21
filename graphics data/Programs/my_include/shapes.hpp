@@ -1,6 +1,8 @@
 #ifndef GRAPHICS_SHAPES_H_
 #define GRAPHICS_SHAPES_H_
 
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 #include <vector>
 
 // move
@@ -9,6 +11,11 @@ bool AlmostEqual(double a, double b, double epsilon);
 namespace shape
 {
     const double PI = 3.14159265;
+
+    enum Movement : bool {
+        DYNAMIC = true,
+        STATIC  = false
+    };
 
     class Point {
       public:
@@ -64,17 +71,18 @@ namespace shape
         std::pair<const Vector, const Vector> FindSidesToReflect(std::vector<Vector>& shapeSides, std::vector<Vector>& otherShapeSides, int sideIndex, int otherSideIndex) const noexcept;
 
       protected:
+        bool dynamic;
         double angle;
         std::vector<Vector> sides;
         Point centre;
         std::pair<double, double> direction;
 
-        virtual double LeftX() const  = 0;
-        virtual double UpperY() const = 0;
-        virtual double RightX() const = 0;
-        virtual double LowerY() const = 0;
-        virtual void SetSides()       = 0;
-        virtual void SetAnglesSides() = 0;
+        virtual double LeftX() const    = 0;
+        virtual double UpperY() const   = 0;
+        virtual double RightX() const   = 0;
+        virtual double LowerY() const   = 0;
+        virtual void SetSides()         = 0;
+        virtual void SetSidesSetAngle() = 0;
 
       public:
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
@@ -84,38 +92,46 @@ namespace shape
         virtual void Move()                          = 0;
         virtual void Draw() const                    = 0;
 
-        Shape(Point centreCoords, double width, double height, double alpha) noexcept;
+        Shape(Movement move, Point centreCoords, double width, double height, double alpha) noexcept;
+        Shape() noexcept;
 
         void SetDirection(double alpha) noexcept;
         void Reflect(double otherVectorAngle) noexcept;
+        void MovementToggle() noexcept;
+        void MovementToggle(Movement move) noexcept;
         std::pair<bool, std::pair<const Vector, const Vector>> CollideWith(const Shape* other) const noexcept;
-        std::pair<bool, const Vector> CollideWith(const Vector* other_vector) const noexcept;
     };
 
     class Rectangle : public Shape {
-    };
-
-    class Square : public Shape {
-      private:
+      protected:
+        double width, height;
         std::vector<Vector> sides;
-        double edge; // distance from square's centre to edge
 
         double LeftX() const noexcept override;
         double UpperY() const noexcept override;
         double RightX() const noexcept override;
         double LowerY() const noexcept override;
         void SetSides() noexcept override;
-        void SetAnglesSides() noexcept override;
+        void SetSidesSetAngle() noexcept override;
 
       public:
-        Square(Point centreCoords, double side, double alpha) noexcept;
-        Square(double centreX, double centreY, double side, double alpha) noexcept;
+        Rectangle(Movement move, Point centreCoords, double width, double height, double alpha) noexcept;
+        Rectangle(Movement move, double centreX, double centreY, double width, double height, double alpha) noexcept;
+        Rectangle() noexcept;
 
+        Rectangle static InitFromStdin();
         std::vector<Vector> GetSides() const noexcept override;
         const int sideAmount() const noexcept override;
-        Square static InitFromStdin();
         void Move() noexcept override;
         void Draw() const noexcept override;
+    };
+
+    class Square : public Rectangle {
+      public:
+        Square(Movement move, Point centreCoords, double side, double alpha) noexcept;
+        Square(Movement move, double centreX, double centreY, double side, double alpha) noexcept;
+
+        Square static InitFromStdin();
     };
 }
 
