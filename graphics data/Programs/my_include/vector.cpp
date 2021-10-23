@@ -15,7 +15,7 @@ namespace shape
         setAngle();
     }
 
-    Vector::Vector(double x1, double y1, double x2, double y2) noexcept :
+    Vector::Vector(long double x1, long double y1, long double x2, long double y2) noexcept :
         Vector(Point(x1, y1), Point(x2, y2))
     {
         setAngle();
@@ -29,21 +29,21 @@ namespace shape
         color = rhs.color;
     }
 
-    double Vector::Slope() const noexcept
+    long double Vector::Slope() const noexcept
     {
         return (AlmostEqual(a.XDiff(b), 0, 1)) ? 0 : a.YDiff(b) / a.XDiff(b);
     }
 
     bool Vector::LiesBetween(const Vector& outsideVector) const noexcept
     {
-        double lowY  = outsideVector.LowestY();
-        double highY = outsideVector.HighestY();
-        double lowX  = outsideVector.LowestX();
-        double highX = outsideVector.HighestX();
+        long double lowY  = outsideVector.LowestY();
+        long double highY = outsideVector.HighestY();
+        long double lowX  = outsideVector.LowestX();
+        long double highX = outsideVector.HighestX();
 
-        // printf("(%f >= %f && %f >= %f) && (%f >= %f && %f >= %f)\n", highX, this->b.x, this->b.x, lowX, highY, this->b.y, this->b.y, lowY);
-        bool secondX = (highX > this->b.x || AlmostEqual(highX, this->b.x, 1)) && (this->b.x > lowX || AlmostEqual(this->b.x, lowX, 1));
-        bool secondY = (highY > this->b.y || AlmostEqual(highY, this->b.y, 1)) && (this->b.y > lowY || AlmostEqual(this->b.y, lowY, 1));
+        // printf("(%Lf >= %Lf && %Lf >= %Lf) && (%Lf >= %Lf && %Lf >= %Lf)\n", highX, this->b.x, this->b.x, lowX, highY, this->b.y, this->b.y, lowY);
+        bool secondX = (highX > this->b.x || AlmostEqual(highX, this->b.x, 0.1)) && (this->b.x > lowX || AlmostEqual(this->b.x, lowX, 0.1));
+        bool secondY = (highY > this->b.y || AlmostEqual(highY, this->b.y, 0.1)) && (this->b.y > lowY || AlmostEqual(this->b.y, lowY, 0.1));
         return secondX && secondY; // firstX && firstY
     }
 
@@ -61,7 +61,7 @@ namespace shape
         b.y = point.y + vector.y;
     }
 
-    void Vector::SetVectors(double x1, double y1, double x2, double y2) noexcept
+    void Vector::SetVectors(long double x1, long double y1, long double x2, long double y2) noexcept
     {
         a.x = x1;
         a.y = y1;
@@ -98,30 +98,30 @@ namespace shape
         return !((sign(cross3) == sign(cross4)) || cross1 == 0 || cross2 == 0);
     }
 
-    double Vector::Magnitude() const noexcept
+    long double Vector::Magnitude() const noexcept
     {
-        double x_diff_squared = a.XDiff(b) * a.XDiff(b);
-        double y_diff_squared = a.YDiff(b) * a.YDiff(b);
+        long double x_diff_squared = a.XDiff(b) * a.XDiff(b);
+        long double y_diff_squared = a.YDiff(b) * a.YDiff(b);
 
         return sqrt(x_diff_squared + y_diff_squared);
     }
 
-    double Vector::HighestX() const noexcept
+    long double Vector::HighestX() const noexcept
     {
         return (a.x > b.x) ? a.x : b.x;
     }
 
-    double Vector::LowestX() const noexcept
+    long double Vector::LowestX() const noexcept
     {
         return (a.x < b.x) ? a.x : b.x;
     }
 
-    double Vector::HighestY() const noexcept
+    long double Vector::HighestY() const noexcept
     {
         return (a.y > b.y) ? a.y : b.y;
     }
 
-    double Vector::LowestY() const noexcept
+    long double Vector::LowestY() const noexcept
     {
         return (a.y < b.y) ? a.y : b.y;
     }

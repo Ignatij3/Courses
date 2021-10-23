@@ -4,70 +4,77 @@
 
 namespace shape
 {
-    double Rectangle::LeftX() const noexcept
+    long double Rectangle::LeftX() const noexcept
     {
         return centre.x - width;
     }
 
-    double Rectangle::RightX() const noexcept
+    long double Rectangle::RightX() const noexcept
     {
         return centre.x + width;
     }
 
-    double Rectangle::UpperY() const noexcept
+    long double Rectangle::UpperY() const noexcept
     {
         return centre.y - height;
     }
 
-    double Rectangle::LowerY() const noexcept
+    long double Rectangle::LowerY() const noexcept
     {
         return centre.y + height;
     }
 
     void Rectangle::SetSides() noexcept
     {
-        double lx = LeftX();
-        double rx = RightX();
-        double uy = UpperY();
-        double ly = LowerY();
+        long double lx = LeftX();
+        long double rx = RightX();
+        long double uy = UpperY();
+        long double ly = LowerY();
 
-        sides[0].SetVectors(lx, uy, width * 2, 0);  // top side
-        sides[1].SetVectors(rx, uy, 0, height * 2); // right side
-        sides[2].SetVectors(lx, uy, 0, height * 2); // left side
-        sides[3].SetVectors(lx, ly, width * 2, 0);  // bottom side
+        sides[0]->SetVectors(lx, uy, width * 2, 0);  // top side
+        sides[1]->SetVectors(rx, uy, 0, height * 2); // right side
+        sides[2]->SetVectors(lx, uy, 0, height * 2); // left side
+        sides[3]->SetVectors(lx, ly, width * 2, 0);  // bottom side
     }
 
     void Rectangle::SetSidesSetAngle() noexcept
     {
         SetSides();
-        sides[0].setAngle();
-        sides[1].setAngle();
-        sides[2].setAngle();
-        sides[3].setAngle();
+        sides[0]->setAngle();
+        sides[1]->setAngle();
+        sides[2]->setAngle();
+        sides[3]->setAngle();
     }
 
-    Rectangle::Rectangle(Movement move, Point centreCoords, double width, double height, double alpha) noexcept :
+    Rectangle::Rectangle(Movement move, Point centreCoords, double width, double height, double alpha) :
         Shape(move, centreCoords, width, height, alpha),
         width((width < 0) ? 0 : width / 2),
-        height((height < 0) ? 0 : height / 2),
-        sides(4, Vector())
+        height((height < 0) ? 0 : height / 2)
     {
-        printf("centre coords: (%f, %f)\n", centre.x, centre.y);
-        printf("width, height: %f, %f\n", width, height);
+        for (int i = 0; i < SIDE_AMOUNT; i++)
+            sides.insert(sides.end(), new Vector());
 
-        SetDirection(alpha);
+        SetDirection();
         SetSidesSetAngle();
     }
 
-    Rectangle::Rectangle(Movement move, double centreX, double centreY, double width, double height, double alpha) noexcept :
+    Rectangle::Rectangle(Movement move, long double centreX, long double centreY, double width, double height, double alpha) :
         Rectangle(move, Point(centreX, centreY), width, height, alpha) { }
 
     Rectangle::Rectangle() noexcept { }
 
+    Rectangle::~Rectangle() //needs fix
+    {
+        // delete sides[0];
+        // delete sides[1];
+        // delete sides[2];
+        // delete sides[3];
+    }
+
     Rectangle static InitFromStdin() noexcept
     {
         int move;
-        double x, y;
+        long double x, y;
         double width, height;
         double angle;
 
@@ -75,10 +82,10 @@ namespace shape
         scanf("%d\n", move);
 
         printf("Enter x-coordinate of square's centre: ");
-        scanf("%f\n", x);
+        scanf("%Lf\n", x);
 
         printf("Enter y-coordinate of square's centre: ");
-        scanf("%f\n", y);
+        scanf("%Lf\n", y);
 
         printf("Enter rectangle's width: ");
         scanf("%f\n", width);
@@ -94,14 +101,14 @@ namespace shape
         return sqr;
     }
 
-    std::vector<Vector> Rectangle::GetSides() const noexcept
+    std::vector<Vector*> Rectangle::GetSides() const noexcept
     {
         return sides;
     }
 
     const int Rectangle::sideAmount() const noexcept
     {
-        return 4;
+        return SIDE_AMOUNT;
     }
 
     void Rectangle::Move() noexcept
@@ -116,10 +123,23 @@ namespace shape
 
     void Rectangle::Draw() const noexcept
     {
-        double lx = LeftX();
-        double rx = RightX();
-        double uy = UpperY();
-        double ly = LowerY();
+        long double lx = LeftX();
+        long double rx = RightX();
+        long double uy = UpperY();
+        long double ly = LowerY();
         al_draw_filled_rectangle(lx, uy, rx, ly, color);
+    }
+
+    Rectangle& Rectangle::operator=(const Rectangle& rhs) noexcept
+    {
+        angle   = rhs.angle;
+        centre  = rhs.centre;
+        color   = rhs.color;
+        dynamic = rhs.dynamic;
+        height  = rhs.height;
+        width   = rhs.width;
+        sides   = rhs.sides;
+
+        return *this;
     }
 }

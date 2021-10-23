@@ -1,19 +1,21 @@
 #include "shapes.hpp"
 
+#include <iostream>
+
 namespace shape
 {
     Point::Point() noexcept :
         x(0), y(0) { }
 
-    Point::Point(double x, double y) noexcept :
+    Point::Point(long double x, long double y) noexcept :
         x(x), y(y) { }
 
-    double Point::XDiff(const Point& rhs) const noexcept
+    long double Point::XDiff(const Point& rhs) const noexcept
     {
         return this->x - rhs.x;
     }
 
-    double Point::YDiff(const Point& rhs) const noexcept
+    long double Point::YDiff(const Point& rhs) const noexcept
     {
         return this->y - rhs.y;
     }

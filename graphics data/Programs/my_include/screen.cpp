@@ -6,14 +6,14 @@
 
 namespace screen
 {
-    std::pair<double, double> ConvertToNormalCoords(double x, double y)
+    std::pair<long double, long double> ConvertToNormalCoords(long double x, long double y)
     {
         return std::make_pair(x, Window::window_height - y);
     }
 
     shape::Point ConvertToNormalCoords(shape::Point a)
     {
-        std::pair<double, double> pt = ConvertToNormalCoords(a.x, a.y);
+        std::pair<long double, long double> pt = ConvertToNormalCoords(a.x, a.y);
         return shape::Point(pt.first, pt.second);
     }
 
@@ -110,10 +110,9 @@ namespace screen
         if (fps <= 0 || window_width <= 0 || window_height <= 0)
             throw InitFailure("Window error: Invalid window initialization arguments passed\n");
 
-        printf("width, height: %f, %f\n", double(window_width / 2), double(window_height / 2));
         window_frame       = shape::Rectangle(shape::Movement::STATIC, window_width / 2, window_height / 2, window_width, window_height, 0);
         window_frame.color = LIGHTGRAY;
-        objects.insert(objects.end(), &window_frame);
+        objects.insert(objects.begin(), &window_frame);
 
         try
         {
@@ -158,13 +157,30 @@ namespace screen
     {
         if (objects.size() > 1)
             for (int i = 0; i < objects.size(); ++i)
-                for (int j = i; j < objects.size(); ++j)
+                for (int j = i + 1; j < objects.size(); ++j)
                 {
+                    // printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
                     auto res = objects[i]->CollideWith(objects[j]);
                     if (res.first)
                     {
-                        objects[i]->Reflect(res.second.second.getAngle());
-                        objects[j]->Reflect(res.second.first.getAngle());
+                        printf("angle before: %f %f\n", objects[i]->angle, objects[j]->angle);
+                        printf("centre: %Lf, %Lf\n", objects[i]->centre.x, objects[i]->centre.y);
+                        printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
+                        objects[i]->Reflect(res.second.second->getAngle());
+                        objects[j]->Reflect(res.second.first->getAngle());
+                        printf("angle after: %f %f\n\n", objects[i]->angle, objects[j]->angle);
+
+                        std::pair<bool, std::pair<const shape::Vector*, const shape::Vector*>> new_res;
+                        do
+                        {
+                            new_res = objects[i]->CollideWith(objects[j]);
+                            objects[i]->Move();
+                            objects[j]->Move();
+                            printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
+                            printf("res:     %p %p\n", res.second.first, res.second.second);
+                            printf("new_res: %p %p\n\n", new_res.second.first, new_res.second.second);
+                        } while (new_res.first && new_res.second.first == res.second.first && new_res.second.second == res.second.second);
+                        printf("exit\n\n");
                         return;
                     }
                 }

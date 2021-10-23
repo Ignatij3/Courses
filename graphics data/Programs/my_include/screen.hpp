@@ -28,9 +28,7 @@ typedef void (*DrawCallback)();
 
 namespace screen
 {
-    inline shape::Vector walls[4]; // make stationary rectangle
-
-    std::pair<double, double> ConvertToNormalCoords(double x, double y);
+    std::pair<long double, long double> ConvertToNormalCoords(long double x, long double y);
     shape::Point ConvertToNormalCoords(shape::Point a);
 
     class Window {
