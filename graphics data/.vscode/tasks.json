@@ -10,7 +10,7 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "-I",
-                "${workspaceFolder}/Programs/my_include",
+                "${workspaceFolder}/Programs/src",
                 "-std=c++20",
                 "-lallegro",
                 "-lallegro_font",
