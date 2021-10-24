@@ -42,8 +42,8 @@ namespace shape
         long double highX = outsideVector.HighestX();
 
         // printf("(%Lf >= %Lf && %Lf >= %Lf) && (%Lf >= %Lf && %Lf >= %Lf)\n", highX, this->b.x, this->b.x, lowX, highY, this->b.y, this->b.y, lowY);
-        bool secondX = (highX > this->b.x || AlmostEqual(highX, this->b.x, 0.1)) && (this->b.x > lowX || AlmostEqual(this->b.x, lowX, 0.1));
-        bool secondY = (highY > this->b.y || AlmostEqual(highY, this->b.y, 0.1)) && (this->b.y > lowY || AlmostEqual(this->b.y, lowY, 0.1));
+        bool secondX = (highX > this->b.x || AlmostEqual(highX, this->b.x, 1)) && (this->b.x > lowX || AlmostEqual(this->b.x, lowX, 1));
+        bool secondY = (highY > this->b.y || AlmostEqual(highY, this->b.y, 1)) && (this->b.y > lowY || AlmostEqual(this->b.y, lowY, 1));
         return secondX && secondY; // firstX && firstY
     }
 

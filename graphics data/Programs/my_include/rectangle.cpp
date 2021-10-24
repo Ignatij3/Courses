@@ -106,7 +106,7 @@ namespace shape
         return sides;
     }
 
-    const int Rectangle::sideAmount() const noexcept
+    const int constexpr Rectangle::sideAmount() const noexcept
     {
         return SIDE_AMOUNT;
     }

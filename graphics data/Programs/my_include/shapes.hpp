@@ -87,10 +87,10 @@ namespace shape
         Point centre;
         ALLEGRO_COLOR color = al_map_rgb(0, 0, 0);
 
-        virtual std::vector<Vector*> GetSides() const = 0;
-        virtual const int sideAmount() const          = 0;
-        virtual void Move()                           = 0;
-        virtual void Draw() const                     = 0;
+        virtual std::vector<Vector*> GetSides() const  = 0;
+        virtual const int constexpr sideAmount() const = 0;
+        virtual void Move()                            = 0;
+        virtual void Draw() const                      = 0;
 
         Shape(Movement move, Point centreCoords, double width, double height, double alpha) noexcept;
         Shape() noexcept;
@@ -123,7 +123,7 @@ namespace shape
 
         Rectangle static InitFromStdin();
         std::vector<Vector*> GetSides() const noexcept override;
-        const int sideAmount() const noexcept override;
+        const int constexpr sideAmount() const noexcept override;
         void Move() noexcept override;
         void Draw() const noexcept override;
         Rectangle& operator=(const Rectangle& rhs) noexcept;

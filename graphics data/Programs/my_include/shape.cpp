@@ -61,8 +61,8 @@ namespace shape
             {
                 if (sides[i]->Cross(*other_sides[j]))
                 {
-                    printf("indeces: %d %d\n", i, j);
-                    printf("last indeces:\n");
+                    // printf("indeces: %d %d\n", i, j);
+                    // printf("last indeces:\n");
                     return std::make_pair(true, FindSidesToReflect(sides, other_sides, i, j));
                 }
             }
@@ -81,7 +81,7 @@ namespace shape
             resulting_vectors.first = res.second;
         else
         {
-            printf("n%d\n", sideIndex);
+            // printf("n%d\n", sideIndex);
             resulting_vectors.first = shapeSides[sideIndex];
         } //ERROR
 
@@ -91,11 +91,11 @@ namespace shape
             resulting_vectors.second = res.second;
         else // side is too big or touched angle
         {
-            printf("n%d\n", otherSideIndex);
+            // printf("n%d\n", otherSideIndex);
             resulting_vectors.second = otherShapeSides[otherSideIndex];
         }
 
-        printf("\n");
+        // printf("\n");
         return resulting_vectors;
     }
 
@@ -108,21 +108,22 @@ namespace shape
             Vector* otherVec = sides[i];
             Vector temp(otherVec->a, angle);
 
-            printf("side (%Lf, %Lf) (%Lf, %Lf)\n", sides[i]->a.x, sides[i]->a.y, sides[i]->b.x, sides[i]->b.y);
-            printf("temp (%Lf, %Lf) (%Lf, %Lf)\n", temp.a.x, temp.a.y, temp.b.x, temp.b.y);
+            // printf("side (%Lf, %Lf), (%Lf, %Lf)\n", sides[i]->a.x, sides[i]->a.y, sides[i]->b.x, sides[i]->b.y);
+            // printf("temp (%Lf, %Lf), (%Lf, %Lf)\n", temp.a.x, temp.a.y, temp.b.x, temp.b.y);
+            // printf("slopes: %Lf %Lf\n", otherVec->Slope(), temp.Slope());
             if (sides[i]->a == angle) // angle touches angle of line
             {
-                printf("a%d\n", i);
+                // printf("a%d\n", i);
                 return std::make_pair(true, otherVec); // vector, perpendicular to incoming angle
             }
 
-            if (AlmostEqual(otherVec->Slope(), temp.Slope(), 1) && temp.LiesBetween(*otherVec)) // lies on the same line as the vector does and is between endpoints
+            if (AlmostEqual(otherVec->Slope(), temp.Slope(), 0.01) && temp.LiesBetween(*otherVec)) // lies on the same line as the vector does and is between endpoints
             {
-                printf("t%d\n", i);
+                // printf("t%d\n", i);
                 return std::make_pair(true, otherVec);
             }
         }
-        printf("\n");
+        // printf("\n");
         return std::make_pair(false, nullptr);
     }
 

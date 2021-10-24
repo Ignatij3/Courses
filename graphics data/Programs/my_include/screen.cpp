@@ -163,12 +163,12 @@ namespace screen
                     auto res = objects[i]->CollideWith(objects[j]);
                     if (res.first)
                     {
-                        printf("angle before: %f %f\n", objects[i]->angle, objects[j]->angle);
-                        printf("centre: %Lf, %Lf\n", objects[i]->centre.x, objects[i]->centre.y);
-                        printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
+                        // printf("angle before: %f %f\n", objects[i]->angle, objects[j]->angle);
+                        // printf("centre: %Lf, %Lf\n", objects[i]->centre.x, objects[i]->centre.y);
+                        // printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
                         objects[i]->Reflect(res.second.second->getAngle());
                         objects[j]->Reflect(res.second.first->getAngle());
-                        printf("angle after: %f %f\n\n", objects[i]->angle, objects[j]->angle);
+                        // printf("angle after: %f %f\n\n", objects[i]->angle, objects[j]->angle);
 
                         std::pair<bool, std::pair<const shape::Vector*, const shape::Vector*>> new_res;
                         do
@@ -176,11 +176,11 @@ namespace screen
                             new_res = objects[i]->CollideWith(objects[j]);
                             objects[i]->Move();
                             objects[j]->Move();
-                            printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
-                            printf("res:     %p %p\n", res.second.first, res.second.second);
-                            printf("new_res: %p %p\n\n", new_res.second.first, new_res.second.second);
+                            // printf("centre: %Lf, %Lf\n", objects[j]->centre.x, objects[j]->centre.y);
+                            // printf("res:     %p %p\n", res.second.first, res.second.second);
+                            // printf("new_res: %p %p\n\n", new_res.second.first, new_res.second.second);
                         } while (new_res.first && new_res.second.first == res.second.first && new_res.second.second == res.second.second);
-                        printf("exit\n\n");
+                        // printf("exit\n\n");
                         return;
                     }
                 }
