@@ -98,6 +98,11 @@ namespace shape
         return !((sign(cross3) == sign(cross4)) || cross1 == 0 || cross2 == 0);
     }
 
+    Vector Vector::Normal(bool left) const noexcept
+    {
+        return (left) ? Vector(a.x, a.y, -b.y, b.x) : Vector(a.x, a.y, b.y, -b.x);
+    }
+
     long double Vector::Magnitude() const noexcept
     {
         long double x_diff_squared = a.XDiff(b) * a.XDiff(b);
@@ -135,6 +140,12 @@ namespace shape
         int y2 = rhs.b.YDiff(rhs.a);
 
         return x1 * y2 - x2 * y1;
+    }
+
+    //calculates dot product
+    int Vector::operator*(Vector& rhs) const noexcept
+    {
+        return b.XDiff(a) * rhs.b.XDiff(rhs.a) + b.YDiff(a) * rhs.b.YDiff(rhs.a);
     }
 
     Vector& Vector::operator=(const Vector& rhs) noexcept

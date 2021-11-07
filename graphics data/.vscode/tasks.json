@@ -5,8 +5,8 @@
             "label": "C/C++: g++.exe build active file",
             "command": "C:/msys64/mingw64/bin/g++.exe",
             "args": [
-                "${workspaceFolder}/Programs/my_include/*.cpp",
-                "*.cpp",
+                //"${workspaceFolder}/Programs/src/*.cpp",
+                "${fileDirname}/*.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "-I",

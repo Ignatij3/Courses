@@ -31,10 +31,10 @@ namespace shape
         long double uy = UpperY();
         long double ly = LowerY();
 
-        sides[0]->SetVectors(lx, uy, width * 2, 0);  // top side
-        sides[1]->SetVectors(rx, uy, 0, height * 2); // right side
-        sides[2]->SetVectors(lx, uy, 0, height * 2); // left side
-        sides[3]->SetVectors(lx, ly, width * 2, 0);  // bottom side
+        sides[0]->SetVectors(lx, uy, width * 2, 0);   // top side
+        sides[1]->SetVectors(rx, uy, 0, height * 2);  // right side
+        sides[2]->SetVectors(rx, ly, -width * 2, 0);  // bottom side
+        sides[3]->SetVectors(lx, ly, 0, -height * 2); // left side
     }
 
     void Rectangle::SetSidesSetAngle() noexcept
@@ -128,6 +128,16 @@ namespace shape
         long double uy = UpperY();
         long double ly = LowerY();
         al_draw_filled_rectangle(lx, uy, rx, ly, color);
+    }
+
+    std::vector<Vector> Rectangle::GetNormals()
+    {
+        std::vector<Vector> normals;
+        std::vector<shape::Vector*> rect_sides = GetSides();
+
+        normals.insert(normals.end(), rect_sides[0]->Normal(true));
+        normals.insert(normals.end(), rect_sides[1]->Normal(true));
+        return normals;
     }
 
     Rectangle& Rectangle::operator=(const Rectangle& rhs) noexcept
