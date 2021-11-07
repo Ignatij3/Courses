@@ -52,6 +52,7 @@ namespace shape
         void SetVectors(Point point, Point vector) noexcept;
         void SetVectors(long double x1, long double y1, long double x2, long double y2) noexcept;
         bool Cross(const Vector& lineb) const noexcept;
+        Vector Normal(bool left) const noexcept;
 
         long double HighestX() const noexcept;
         long double LowestX() const noexcept;
@@ -59,6 +60,7 @@ namespace shape
         long double LowestY() const noexcept;
 
         int operator^(Vector& rhs) const noexcept;
+        int operator*(Vector& rhs) const noexcept;
         Vector& operator=(const Vector& rhs) noexcept;
         Vector& operator=(Vector&& rhs) noexcept;
         bool operator==(const Vector& rhs) const noexcept;
@@ -66,21 +68,18 @@ namespace shape
 
     // in circle, check for collision with vector pointing in move direction
     class Shape { //брать в расчёт массу и потерю скорости
-      private:
-        std::pair<bool, Vector*> LiesOnLine(std::vector<Vector*>& sides, const Point& angle) const noexcept;
-        std::pair<Vector*, Vector*> FindSidesToReflect(std::vector<Vector*>& shapeSides, std::vector<Vector*>& otherShapeSides, int sideIndex, int otherSideIndex) const noexcept;
-
       protected:
         bool dynamic;
         std::vector<Vector*> sides;
         std::pair<double, double> direction;
 
-        virtual long double LeftX() const  = 0;
-        virtual long double UpperY() const = 0;
-        virtual long double RightX() const = 0;
-        virtual long double LowerY() const = 0;
-        virtual void SetSides()            = 0;
-        virtual void SetSidesSetAngle()    = 0;
+        virtual long double LeftX() const        = 0;
+        virtual long double UpperY() const       = 0;
+        virtual long double RightX() const       = 0;
+        virtual long double LowerY() const       = 0;
+        virtual void SetSides()                  = 0;
+        virtual void SetSidesSetAngle()          = 0;
+        virtual std::vector<Vector> GetNormals() = 0;
 
       public:
         double angle;
@@ -112,7 +111,7 @@ namespace shape
         long double UpperY() const noexcept override;
         long double RightX() const noexcept override;
         long double LowerY() const noexcept override;
-        void SetSides() noexcept override;
+        void SetSides() noexcept override; //clockwise convention
         void SetSidesSetAngle() noexcept override;
 
       public:
@@ -126,6 +125,7 @@ namespace shape
         const int constexpr sideAmount() const noexcept override;
         void Move() noexcept override;
         void Draw() const noexcept override;
+        std::vector<Vector> GetNormals() override;
         Rectangle& operator=(const Rectangle& rhs) noexcept;
     };
 

@@ -188,6 +188,8 @@ namespace screen
 
     void Window::MoveAll() noexcept
     {
+        std::for_each(objects.begin(), objects.end(), (*obj)->Move());
+
         for (auto obj = objects.begin(); obj != objects.end(); ++obj)
         {
             (*obj)->Move();
