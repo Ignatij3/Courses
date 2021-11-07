@@ -12,6 +12,7 @@
                 "-I",
                 "${workspaceFolder}/Programs/src",
                 "-std=c++20",
+                "-g",
                 "-lallegro",
                 "-lallegro_font",
                 "-lliballegro",

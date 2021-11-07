@@ -1,17 +1,28 @@
 #include <iostream>
-#include <map>
 #include <string>
-#include <vector>
+
+std::string extractFirstSubstring(std::string* str, const std::string& delim)
+{
+    std::size_t delim_pos = str->find(delim);
+    if (delim_pos == -1)
+        return "";
+
+    std::string substring = str->substr(0, delim_pos + 1);
+    str->erase(0, delim_pos + 1);
+
+    return substring;
+}
 
 class Serialization {
   protected:
-    enum token_value {
-        DELIM      = ',',
-        ASSIGN     = '=',
-        END        = ';',
-        PARAM_LIST = ':'
-    };
     std::string iter_string;
+    enum token_value {
+        DELIM  = ',',
+        ASSIGN = '=',
+        END    = ';',
+    };
+
+    Serialization() { }
 
     char next()
     {
@@ -28,21 +39,15 @@ class Serialization {
     std::string getValue()
     {
         std::string value;
-        for (char token = next(); token != 0; token = next())
+        for (char token = next(); token != END; token = next())
         {
-            if (token == DELIM || token == END)
+            if (token == DELIM)
                 break;
             value.push_back(token);
         }
 
         return value;
     }
-
-    virtual void setValue(std::string member_name, std::string value) = 0;
-
-  public:
-    virtual std::string toString()                  = 0;
-    virtual void fromString(const std::string& str) = 0;
 };
 
 class Square : public Serialization {
@@ -87,37 +92,44 @@ class Square : public Serialization {
 
         for (char token = next(); token != 0 && token != END; token = next())
         {
-            switch (token)
+            if (token == ASSIGN)
             {
-            case ASSIGN:
                 setValue(buffer, getValue());
                 buffer = "";
-                break;
-
-            case PARAM_LIST:
-                if (buffer != "Square")
-                {
-                    std::printf("Wrong object passed\n");
-                    return;
-                }
-
-                buffer = "";
-                break;
-
-            default:
-                buffer.push_back(token);
+                continue;
             }
+            buffer.push_back(token);
         }
     }
 };
 
-class Circle {
+class Circle : public Serialization {
   private:
     double x, y;
     int radius;
 
+    void setValue(std::string member_name, std::string value)
+    {
+        if (member_name == "x")
+        {
+            x = atof(value.c_str());
+        }
+        else if (member_name == "y")
+        {
+            y = atof(value.c_str());
+        }
+        else if (member_name == "radius")
+        {
+            radius = atoi(value.c_str());
+        }
+    }
+
   public:
-    Circle(double xpos = 0, double ypos = 0, int rad = 1);
+    Circle(double xpos = 0, double ypos = 0, int rad = 1) :
+        x(xpos), y(ypos), radius(rad)
+    {
+        radius = (radius < 0) ? 0 : radius;
+    }
 
     std::string toString()
     {
@@ -125,14 +137,82 @@ class Circle {
         repr = "Circle:x=" + std::to_string(x) + ",y=" + std::to_string(y) + ",radius=" + std::to_string(radius) + ";";
         return repr;
     }
+
+    void fromString(const std::string& str)
+    {
+        iter_string = str;
+        std::string buffer;
+
+        for (char token = next(); token != 0 && token != END; token = next())
+        {
+            if (token == ASSIGN)
+            {
+                setValue(buffer, getValue());
+                buffer = "";
+                continue;
+            }
+            buffer.push_back(token);
+        }
+    }
+};
+
+class FigureFactory {
+  private:
+    std::string figureData;
+
+  public:
+    FigureFactory() { }
+
+    FigureFactory(const std::string& str) :
+        figureData(str) { }
+
+    void addFigures(const std::string& str)
+    {
+        figureData += str;
+    }
+
+    void* getNext()
+    {
+        std::string curr_str = extractFirstSubstring(&figureData, ";");
+        if (curr_str == "")
+            return nullptr;
+        std::string class_name = extractFirstSubstring(&curr_str, ":");
+
+        if (class_name == "Square:")
+        {
+            Square* sqr = new Square;
+            sqr->fromString(curr_str);
+            return sqr;
+        }
+        else if (class_name == "Circle:")
+        {
+            Circle* circ = new Circle;
+            circ->fromString(curr_str);
+            return circ;
+        }
+        else
+        {
+            std::printf("Object cannot be parsed\n");
+        }
+
+        return nullptr;
+    }
 };
 
 int main()
 {
-    Square sqr(15, 15, 15);
-    printf("before: %s\n", sqr.toString().c_str());
-    sqr.fromString("Square:side=200,x=-13.333333,y=0;");
-    printf("after: %s\n", sqr.toString().c_str());
+    FigureFactory fig("Square:side=200,x=-13.333333,y=0;Square:x=15,y=15,side=15;");
+    Square* sqrptr = static_cast<Square*>(fig.getNext());
+    if (sqrptr)
+        printf("new: %s\n", sqrptr->toString().c_str());
+
+    sqrptr = static_cast<Square*>(fig.getNext());
+    if (sqrptr)
+        printf("new: %s\n", sqrptr->toString().c_str());
+
+    sqrptr = static_cast<Square*>(fig.getNext());
+    if (sqrptr)
+        printf("new: %s\n", sqrptr->toString().c_str());
 
     return 0;
 }
