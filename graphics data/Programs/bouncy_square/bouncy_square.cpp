@@ -17,7 +17,7 @@ void Draw()
     window.DrawAll();
 }
 
-int main()
+int main() //SAT - Separating Axis Theorem
 {
     shape::Square sqr1(shape::Movement::DYNAMIC, 100, 220, 40, 135);
     shape::Square sqr2(shape::Movement::DYNAMIC, 200, 520, 75, 330);

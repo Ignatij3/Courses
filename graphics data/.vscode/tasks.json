@@ -5,12 +5,11 @@
             "label": "C/C++: g++.exe build active file",
             "command": "C:/msys64/mingw64/bin/g++.exe",
             "args": [
-                //"${workspaceFolder}/Programs/src/*.cpp",
                 "${fileDirname}/*.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe",
                 "-I",
-                "${workspaceFolder}/Programs/src",
+                "${workspaceFolder}/Programs/libs",
                 "-std=c++20",
                 "-g",
                 "-lallegro",
