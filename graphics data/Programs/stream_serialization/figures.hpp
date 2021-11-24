@@ -28,6 +28,9 @@ class Figure : public Serialization {
     virtual std::string toFileString() const        = 0;
     virtual void fromString(const std::string& str) = 0;
     virtual void fromString(std::stringstream& str) = 0;
+
+    friend std::string& operator>>(std::string& str, Figure& fig);
+    friend std::stringstream& operator>>(std::stringstream& str_stream, Figure& fig);
 };
 
 class Square : public Figure {

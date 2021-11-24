@@ -32,6 +32,18 @@ std::string Serialization::getValue()
 Figure::Figure(double xpos, double ypos) :
     x(xpos), y(ypos) { }
 
+std::string& operator>>(std::string& str, Figure& fig)
+{
+    fig.fromString(str);
+    return str;
+}
+
+std::stringstream& operator>>(std::stringstream& str_stream, Figure& fig)
+{
+    fig.fromString(str_stream);
+    return str_stream;
+}
+
 void Square::setValue(std::string member_name, std::string value)
 {
     if (member_name == "x")
