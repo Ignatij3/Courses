@@ -32,15 +32,13 @@ void* FigureFactory::getNext()
     if (class_name == "Square")
     {
         figure_ptr = new Square;
-        // curr_str.substr(7) >> figure_ptr;
-        // figure_ptr << curr_str;
+        curr_str   = curr_str.substr(7);
         curr_str >> *figure_ptr;
     }
     else if (class_name == "Circle")
     {
         figure_ptr = new Circle;
-        // curr_str.substr(7) >> figure_ptr;
-        // figure_ptr << curr_str;
+        curr_str   = curr_str.substr(7);
         curr_str >> *figure_ptr;
     }
     else
@@ -58,13 +56,11 @@ void* FigureFactory::getNextStream(std::stringstream str_stream)
     if (class_name == "Square")
     {
         figure_ptr = new Square;
-        // figure_ptr << str_stream;
         str_stream >> *figure_ptr;
     }
     else if (class_name == "Circle")
     {
         figure_ptr = new Circle;
-        // figure_ptr << str_stream;
         str_stream >> *figure_ptr;
     }
     else
