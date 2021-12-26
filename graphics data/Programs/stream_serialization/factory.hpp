@@ -1,4 +1,6 @@
 #ifndef SERIALIZATION_FACTORY_HPP
+#define SERIALIZATION_FACTORY_HPP
+
 #include <sstream>
 #include <string>
 

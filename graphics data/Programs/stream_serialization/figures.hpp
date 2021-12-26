@@ -1,4 +1,6 @@
 #ifndef SERIALIZATION_FIGURES_HPP
+#define SERIALIZATION_FIGURES_HPP
+
 #include <sstream>
 #include <string>
 
