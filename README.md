@@ -1,5 +1,5 @@
 # Courses
-### Golang 1st semester (September 2017 - January 2018)
+### Golang 1st semester (January 2019 - May 2019)
 > These are the programs I made throughout 1st semester of programming courses, using **golang**.
 > 
 > These are just simple tiny programs of 1 file, I made them in course of lessons to become somewhat familiar with **golang** syntax.
