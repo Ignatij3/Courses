@@ -1,0 +1,5 @@
+http://acmp.ru/index.asp?main=task&id_task=176
+
+Сколько скобочных строк длины 2N и глубины = K.
+
+

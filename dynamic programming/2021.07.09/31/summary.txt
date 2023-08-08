@@ -1,0 +1,3 @@
+http://acmp.ru/index.asp?main=task&id_task=77
+
+Количество чисел от 1 до N c ровно К нулями в двоичной записи.

@@ -1,0 +1,48 @@
+// readN reads at most n bytes from r and returns them as a string.
+func readN(r io.Reader, n int) (string, error) {
+	buf := make([]byte, n)
+	m, err := r.Read(buf)
+	if err != nil {
+		return "", err
+	}
+	return string(buf[:m]), nil
+}
+
+//=========================================
+
+//type Reader interface {
+//	Read(p []byte) (n int, err error)
+//}
+
+type MockReader struct {
+	MockRead func([]byte) (int, error)
+}
+
+func (m MockReader) Read(p []byte) (int, error) {
+	return m.MockRead(p)
+}
+
+// test size of buffer
+func TestReadN_bufSize(t *testing.T) {
+	total := 0
+	mr := &MockReader{func(b []byte) (int, error) {
+		total = len(b)
+		return 0, nil
+	}}
+	readN(mr, 5)
+	if total != 5 {
+		t.Fatalf("expected 5, got %d", total)
+	}
+}
+
+// test error
+func TestReadN_error(t *testing.T) {
+	expect := errors.New("some non-nil error")
+	mr := &MockReader{func(b []byte) (int, error) {
+		return 0, expect
+	}}
+	_, err := readN(mr, 5)
+	if err != expect {
+		t.Fatal("unexpected error")
+	}
+}

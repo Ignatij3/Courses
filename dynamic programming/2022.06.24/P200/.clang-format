@@ -1,0 +1,33 @@
+BasedOnStyle: WebKit
+
+IndentWidth: 4
+ColumnLimit: 0
+AccessModifierOffset: -2
+
+AlignConsecutiveAssignments: Consecutive
+AlignTrailingComments: true
+AlignConsecutiveMacros: true
+AlignOperands: AlignAfterOperator
+
+AllowShortBlocksOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortEnumsOnASingleLine: true
+AllowShortLambdasOnASingleLine: All
+
+BreakConstructorInitializers: AfterColon
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterEnum: false
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: false
+  BeforeElse: false
+  BeforeWhile: false
+
+NamespaceIndentation: All
+BreakBeforeBinaryOperators: NonAssignment
+CompactNamespaces: false
+IncludeBlocks: Regroup

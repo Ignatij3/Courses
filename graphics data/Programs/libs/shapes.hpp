@@ -111,7 +111,7 @@ namespace shape
         long double UpperY() const noexcept override;
         long double RightX() const noexcept override;
         long double LowerY() const noexcept override;
-        void SetSides() noexcept override; //clockwise convention
+        void SetSides() noexcept override; // clockwise convention
         void SetSidesSetAngle() noexcept override;
 
       public:
@@ -122,7 +122,7 @@ namespace shape
 
         Rectangle static InitFromStdin();
         std::vector<Vector*> GetSides() const noexcept override;
-        const int constexpr sideAmount() const noexcept override;
+        const int sideAmount() const noexcept override;
         void Move() noexcept override;
         void Draw() const noexcept override;
         std::vector<Vector> GetNormals() override;

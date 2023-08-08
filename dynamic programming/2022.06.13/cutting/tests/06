@@ -1,0 +1,795 @@
+100 194 600
+37 75
+6 37
+9 75
+5 37
+5 70
+70 73
+27 75
+6 50
+50 57
+35 75
+9 19
+9 94
+5 36
+50 62
+57 88
+36 39
+52 70
+21 35
+62 79
+72 94
+15 94
+9 82
+19 74
+52 63
+46 62
+34 36
+60 74
+8 63
+5 11
+24 35
+18 60
+40 82
+54 88
+81 82
+3 37
+26 46
+19 91
+39 42
+4 18
+50 76
+37 38
+17 72
+58 91
+62 95
+48 75
+9 44
+57 93
+11 51
+71 79
+46 89
+7 93
+31 74
+50 78
+15 61
+5 13
+50 68
+25 89
+22 35
+41 60
+14 41
+37 96
+36 55
+34 85
+27 98
+11 87
+12 51
+11 69
+93 99
+1 12
+2 13
+1 90
+33 36
+6 30
+33 84
+61 92
+23 31
+13 77
+6 20
+65 88
+7 64
+33 59
+35 56
+5 53
+43 57
+32 55
+58 83
+29 41
+47 75
+45 61
+21 86
+16 77
+61 66
+9 28
+67 81
+25 49
+44 97
+10 15
+44 100
+80 95
+24 61
+46 61
+46 76
+43 61
+57 76
+33 57
+57 69
+33 53
+53 93
+61 65
+39 53
+24 54
+18 61
+39 84
+53 63
+16 33
+6 69
+33 95
+6 14
+55 76
+49 55
+53 89
+89 97
+49 78
+24 77
+37 97
+12 24
+14 80
+73 80
+2 84
+2 94
+55 86
+32 94
+28 43
+33 34
+73 74
+35 86
+27 94
+11 33
+69 70
+9 76
+14 58
+18 29
+83 84
+42 80
+21 54
+32 64
+36 74
+26 88
+69 99
+50 59
+5 69
+25 63
+32 67
+66 93
+39 48
+31 99
+1 67
+12 30
+40 61
+72 88
+23 36
+43 92
+4 94
+72 96
+38 63
+87 89
+44 86
+3 23
+51 92
+1 22
+17 77
+10 26
+69 71
+8 61
+15 53
+4 98
+48 52
+38 85
+79 99
+8 82
+7 14
+99 100
+52 81
+26 56
+91 97
+55 90
+20 55
+68 84
+11 13
+15 19
+62 98
+47 92
+12 41
+1 45
+ask 82 2
+ask 22 11
+ask 23 98
+cut 50 59
+cut 9 75
+ask 54 42
+cut 27 75
+cut 11 33
+cut 93 99
+cut 89 97
+ask 84 51
+cut 11 13
+ask 93 35
+ask 7 62
+ask 45 97
+ask 6 34
+ask 27 94
+cut 47 92
+ask 70 11
+ask 79 78
+cut 52 63
+cut 55 90
+ask 85 61
+cut 20 55
+ask 4 36
+ask 79 6
+ask 95 52
+ask 4 59
+ask 94 100
+ask 93 30
+ask 92 54
+ask 12 74
+ask 74 53
+cut 9 28
+ask 76 87
+ask 46 39
+cut 33 53
+cut 60 74
+cut 67 81
+ask 34 45
+ask 6 83
+ask 92 68
+ask 55 22
+ask 8 45
+cut 46 76
+ask 74 94
+ask 100 90
+ask 95 15
+ask 84 39
+cut 32 64
+ask 94 94
+cut 62 95
+ask 12 21
+ask 27 71
+cut 53 93
+ask 81 91
+ask 10 84
+ask 57 12
+ask 77 99
+cut 80 95
+ask 87 60
+cut 57 93
+ask 97 39
+ask 27 83
+ask 38 8
+cut 13 77
+ask 54 37
+ask 89 53
+cut 87 89
+ask 89 91
+cut 24 77
+cut 27 98
+cut 50 57
+cut 32 55
+ask 21 89
+ask 54 55
+cut 79 99
+ask 38 27
+ask 56 40
+cut 1 22
+ask 60 61
+cut 81 82
+ask 50 43
+cut 35 56
+ask 3 87
+cut 54 88
+ask 52 34
+ask 52 30
+ask 82 63
+ask 61 75
+ask 56 45
+ask 100 45
+cut 6 20
+ask 49 57
+ask 67 40
+cut 16 77
+ask 94 25
+ask 53 97
+ask 46 84
+ask 65 3
+ask 16 72
+cut 34 36
+ask 53 59
+cut 3 37
+ask 66 34
+ask 70 95
+ask 76 52
+cut 44 100
+ask 31 56
+ask 9 18
+cut 37 96
+ask 100 89
+ask 74 65
+ask 30 77
+ask 93 86
+cut 21 35
+ask 52 94
+ask 88 77
+cut 50 76
+cut 40 82
+cut 37 97
+ask 57 53
+cut 14 41
+ask 26 32
+ask 38 46
+ask 73 71
+cut 7 14
+cut 99 100
+ask 18 1
+ask 32 22
+cut 71 79
+ask 61 67
+ask 77 92
+ask 41 59
+cut 72 94
+cut 39 84
+ask 25 23
+ask 97 63
+cut 2 13
+ask 97 20
+cut 1 90
+cut 6 69
+ask 72 76
+cut 47 75
+cut 4 98
+ask 36 69
+cut 46 89
+ask 20 36
+ask 41 72
+ask 20 40
+ask 46 8
+cut 73 74
+ask 5 9
+ask 31 17
+cut 33 57
+ask 80 1
+cut 57 88
+ask 20 26
+ask 98 43
+ask 71 70
+ask 7 41
+ask 75 34
+ask 42 54
+cut 91 97
+ask 17 67
+cut 51 92
+cut 58 91
+cut 36 74
+cut 66 93
+ask 92 17
+cut 5 11
+ask 89 5
+cut 12 30
+cut 39 48
+ask 63 39
+ask 39 4
+cut 32 67
+ask 96 7
+cut 6 50
+ask 64 51
+ask 81 49
+cut 40 61
+ask 31 21
+ask 5 83
+ask 73 50
+cut 37 38
+cut 35 75
+cut 5 69
+cut 7 93
+cut 11 69
+cut 36 39
+cut 38 63
+ask 48 6
+ask 6 19
+ask 69 59
+cut 50 68
+ask 91 35
+ask 28 4
+ask 13 83
+ask 1 98
+cut 18 29
+ask 30 81
+ask 41 18
+ask 90 28
+cut 31 99
+cut 27 94
+ask 6 87
+ask 43 80
+ask 29 58
+ask 19 84
+ask 34 9
+cut 9 82
+cut 19 74
+cut 4 94
+ask 20 1
+ask 42 5
+ask 60 64
+ask 44 66
+ask 85 93
+cut 5 70
+ask 65 65
+cut 14 80
+cut 41 60
+ask 65 17
+ask 94 41
+ask 66 1
+cut 58 83
+cut 38 85
+ask 20 87
+cut 1 67
+cut 43 61
+ask 45 77
+ask 39 98
+ask 23 30
+ask 77 69
+ask 54 36
+cut 14 58
+ask 36 98
+ask 6 53
+cut 28 43
+ask 25 22
+ask 35 41
+ask 90 47
+ask 30 38
+cut 37 75
+ask 60 93
+ask 7 88
+cut 9 19
+ask 69 52
+ask 32 80
+ask 87 31
+ask 65 99
+ask 70 47
+cut 69 99
+ask 26 49
+cut 61 65
+ask 92 18
+ask 69 41
+cut 25 49
+cut 39 42
+cut 6 30
+ask 34 53
+ask 46 81
+ask 45 80
+ask 82 57
+cut 15 53
+ask 46 84
+ask 76 34
+ask 87 66
+ask 63 21
+ask 46 4
+ask 61 53
+ask 73 58
+ask 55 95
+ask 43 38
+ask 61 42
+ask 61 82
+ask 84 72
+ask 66 97
+cut 12 24
+cut 5 53
+cut 49 78
+ask 48 22
+ask 58 62
+ask 36 94
+cut 55 76
+ask 69 95
+cut 61 66
+ask 53 63
+ask 60 84
+ask 25 30
+ask 55 48
+ask 76 61
+ask 83 41
+ask 7 75
+cut 72 96
+ask 3 81
+ask 98 70
+ask 27 70
+cut 23 31
+ask 68 93
+ask 17 44
+ask 3 79
+ask 30 41
+ask 49 48
+ask 83 23
+ask 94 83
+ask 56 69
+cut 25 63
+ask 72 48
+cut 2 84
+ask 28 57
+ask 48 74
+ask 58 34
+ask 34 39
+ask 50 20
+ask 61 79
+cut 65 88
+ask 3 6
+ask 5 20
+ask 39 82
+cut 68 84
+ask 36 56
+ask 28 81
+ask 41 50
+ask 23 96
+ask 67 97
+cut 43 92
+ask 98 38
+ask 73 6
+ask 74 36
+ask 32 23
+ask 45 20
+cut 52 70
+cut 39 53
+ask 71 57
+cut 45 61
+ask 7 5
+ask 52 96
+cut 29 41
+cut 5 13
+ask 78 40
+ask 11 100
+cut 43 57
+cut 18 61
+ask 4 3
+ask 64 66
+ask 2 13
+ask 73 41
+ask 7 42
+cut 6 37
+ask 58 77
+cut 18 60
+ask 2 3
+ask 73 22
+cut 25 89
+ask 44 13
+ask 41 27
+ask 82 75
+ask 30 97
+cut 33 95
+ask 59 18
+cut 33 59
+ask 1 32
+ask 16 6
+ask 15 54
+cut 33 34
+ask 44 78
+ask 83 43
+ask 2 7
+ask 81 27
+ask 14 87
+cut 7 64
+ask 38 10
+cut 17 72
+ask 47 89
+ask 83 75
+ask 44 66
+cut 57 76
+ask 30 42
+ask 97 75
+ask 24 97
+cut 21 86
+cut 46 61
+cut 70 73
+cut 36 55
+ask 79 5
+ask 31 79
+cut 53 63
+ask 31 92
+ask 68 39
+ask 18 32
+ask 32 15
+cut 61 92
+cut 53 89
+cut 62 98
+ask 92 30
+cut 11 51
+ask 36 48
+cut 9 94
+ask 84 66
+cut 1 45
+ask 84 9
+ask 6 8
+cut 44 86
+ask 5 66
+cut 33 84
+ask 85 68
+ask 42 91
+ask 45 19
+ask 60 26
+ask 79 56
+cut 19 91
+ask 88 91
+cut 72 88
+cut 15 19
+cut 83 84
+ask 8 69
+ask 7 39
+ask 64 96
+cut 69 71
+cut 24 35
+ask 68 68
+ask 50 59
+cut 62 79
+cut 16 33
+ask 4 54
+ask 89 53
+ask 55 38
+ask 6 29
+ask 40 1
+ask 70 45
+cut 4 18
+ask 5 3
+ask 73 68
+ask 35 29
+cut 26 56
+ask 61 96
+cut 24 54
+ask 26 72
+ask 90 84
+cut 9 76
+cut 48 75
+ask 60 81
+cut 5 36
+ask 23 63
+ask 59 69
+ask 23 83
+cut 34 85
+ask 31 52
+ask 7 53
+ask 47 99
+ask 89 90
+ask 33 69
+ask 77 19
+cut 42 80
+ask 59 32
+ask 17 93
+ask 80 67
+ask 70 51
+ask 18 65
+cut 22 35
+cut 33 36
+cut 8 63
+ask 54 49
+ask 54 35
+cut 50 62
+ask 94 40
+ask 36 5
+cut 46 62
+ask 72 29
+cut 10 26
+ask 76 1
+ask 6 77
+cut 6 14
+ask 79 57
+ask 9 54
+ask 50 95
+cut 12 51
+ask 74 72
+ask 52 65
+ask 77 52
+ask 57 22
+cut 15 94
+ask 47 68
+ask 22 36
+ask 31 7
+ask 81 7
+ask 50 33
+ask 32 89
+cut 2 94
+ask 98 84
+ask 69 47
+ask 15 76
+ask 19 19
+cut 26 46
+ask 32 7
+ask 56 92
+ask 45 45
+ask 50 74
+ask 92 7
+ask 48 59
+ask 68 73
+ask 7 38
+ask 75 49
+cut 1 12
+ask 84 34
+ask 83 24
+ask 63 69
+ask 73 18
+ask 75 70
+cut 10 15
+ask 71 17
+cut 5 37
+cut 12 41
+ask 45 28
+cut 23 36
+cut 8 61
+cut 48 52
+cut 11 87
+ask 38 98
+ask 50 30
+cut 50 78
+ask 88 67
+cut 3 23
+ask 92 97
+ask 54 34
+ask 29 47
+ask 18 86
+ask 69 63
+ask 7 43
+ask 71 21
+ask 8 39
+ask 96 25
+cut 49 55
+ask 7 94
+ask 61 64
+ask 87 67
+ask 67 90
+ask 67 88
+ask 87 79
+ask 88 65
+ask 57 51
+ask 52 84
+cut 15 61
+ask 24 84
+cut 44 97
+ask 61 44
+cut 21 54
+ask 22 72
+ask 45 100
+ask 92 62
+ask 79 63
+cut 52 81
+ask 39 72
+ask 16 84
+ask 69 57
+cut 73 80
+cut 31 74
+ask 79 42
+ask 49 76
+ask 36 78
+ask 64 10
+cut 35 86
+ask 1 53
+ask 100 7
+ask 12 84
+ask 56 27
+ask 75 67
+ask 97 42
+cut 55 86
+ask 58 20
+cut 17 77
+ask 50 9
+ask 16 37
+cut 26 88
+ask 85 18
+ask 36 27
+ask 20 79
+cut 32 94
+cut 24 61
+ask 24 39
+ask 28 26
+ask 13 96
+ask 72 46
+cut 9 44
+cut 69 70
+cut 57 69
+ask 59 66
+cut 8 82
+ask 46 56
+ask 25 28
+ask 90 68
+ask 8 34
+ask 50 18
+ask 21 27
+ask 12 21
+ask 64 23
+ask 84 25
+ask 79 44

@@ -1,0 +1,4 @@
+http://zvn.uriit.ru/MunOlimp/007/007.htm
+http://acmu.ru/index.asp?main=task&id_task=320
+ 
+Коридор размером MxN. Коврики размеров 1хМ и 1xN. Сколько способов накрыть.

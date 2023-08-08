@@ -1,0 +1,4 @@
+http://informatics.mccme.ru/moodle/mod/statements/view3.php?id=1480&chapterid=1124
+
+Длина максимального палиндрома-подпоследовательности и пример такого палиндрома.
+

@@ -1,0 +1,5 @@
+Московская командная олимпиада школьников по информатике [2008]. Task G
+http://olympiads.ru/moscow/2008/team/results.shtml
+http://informatics.ru/viewproblem.php?problem_id=445&round_id=136	
+
+Путь по горам: можно строить мосты ограниченной длины.
