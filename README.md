@@ -1,11 +1,7 @@
 # Courses
-<<<<<<< HEAD
 
-### Golang 1st semester (September 2017 - January 2018)
-
-=======
 ### Golang 1st semester (January 2019 - May 2019)
->>>>>>> db8904c08c0c3cb33f4fd595ec21482c59621903
+
 > These are the programs I made throughout 1st semester of programming courses, using **golang**.
 >
 > These are just simple tiny programs of 1 file, I made them in course of lessons to become somewhat familiar with **golang** syntax.
@@ -38,22 +34,14 @@
 >
 > #### Some files and folders like *send-file-via-http-master*, *Examples* and html clients along with .js scripts are not mine
 
-<<<<<<< HEAD
-### Web 1st semester (January 2017 - May 2017 (approximately))
-
-=======
 ### Web 1st semester (January 2017 - May 2017)
->>>>>>> db8904c08c0c3cb33f4fd595ec21482c59621903
+
 > Here I was getting to know **html**.
 >
 > Nothing much, just simple web pages.
 
-<<<<<<< HEAD
-### Web 2nd semester (June 2017 - July 2017 (approximately))
-
-=======
 ### Web 2nd semester (June 2017 - July 2017)
->>>>>>> db8904c08c0c3cb33f4fd595ec21482c59621903
+
 > Here are a bit more advanced web pages, made using **html** and **css** to imrove their appearance.
 
 ### Web 3rd semester (June 2019 - July 2019)
